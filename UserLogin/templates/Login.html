@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{%load static %} 
+
+
+{% block 'head'%}
+
+{% endblock%}
+
+
+{% block 'dashboardL'%}
+
+    
+    
+    <div class="form">
+        <form action="{% url 'Login'%}"  method="POST">
+            {% csrf_token %}
+            <img src="{% static 'clientes/images/LOGO_CASA_PRINCIPAL.png' %}">
+            <input type="text" class="inputs" placeholder="Usuário" name="nome" class="">
+            <input type="password"class="inputs" placeholder="Senha" name="senha">
+            <input type="submit" class="button"value="Entrar">
+            <a class="button" href="{% url 'cadastro'%}">Cadastre-se</a>
+        </form>
+    </div>
+
+
+{% endblock%}

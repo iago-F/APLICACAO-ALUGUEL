@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{%load static %} 
+
+
+{% block 'dashboardC'%}
+
+
+    <form action="{% url 'cadastro'%}" method="POST">
+        {% csrf_token %}
+        <img src="{% static 'clientes/images/LOGO_CASA_PRINCIPAL.png' %}">
+        <input type="text" class="inputsC" placeholder="usuario" name="username"><br><br>
+        <input type="text" class="inputsC" placeholder="nome" name="first_name"><br><br>
+        <input type="text" class="inputsC" placeholder="ultimo nome" name="last_name"><br><br>
+        <input type="text" class="inputsC" placeholder="CPF" name="CPF"><br><br>
+        <input type="email" class="inputsC" placeholder="E-mail" name="email"><br><br>
+        <input type="tel" class="inputsC" placeholder="Telefone" name="telefone"><br><br>
+        <input type="password" class="inputsC" placeholder="senha" name="senha">
+        <input type="submit"  class="buttonC" value="Cadastre-se">
+    </form>
+
+
+
+{% endblock%}

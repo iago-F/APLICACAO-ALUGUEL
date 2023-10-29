@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<html lang="pt-BR">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'general/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'general/css/style.css' %}">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+  </head>
+    <body>
+      {% block 'dashboardP'%}
+        {%if request.user.is_authenticated %}
+          <p>Nome de Usuário: {{ request.user.username }}</p>
+          <p>Email: {{ request.user.email }}</p>
+        {% else %}
+        <p>O usuário não está autenticado.</p>
+        {% endif %}
+
+        
+
+
+        <form method="POST" action="{% url 'Update_Usuario'%}">
+          {% csrf_token %}
+          {% comment %} <input type="text" class="inputsC" placeholder="CPF" name="CPF"><br><br> {% endcomment %}
+          <input type="text" class="inputsC" id="first_name" value="{{user.first_name}}" placeholder="nome" name="first_name"><br><br>
+          <input type="text" class="inputsC" id="last_name"value="{{user.last_name}}" placeholder="sobre nome" name="last_name"><br><br>
+          <input type="email" id="email" name="email" value="{{user.email}}" class="inputsC" placeholder="E-mail"><br><br>
+          {% comment %} <input type="tel" class="inputsC" placeholder="Telefone" name="telefone"><br><br> {% endcomment %}
+          <input type="submit" value="Atualizar dados">
+        </form>
+        <form method="POST" action="{% url 'Delet_usuario'%}">
+          {% csrf_token %}
+          <input type="submit" value="Excluir Conta">
+        </form>
+      
+      {% endblock%}
+    </body>

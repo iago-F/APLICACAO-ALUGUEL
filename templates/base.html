@@ -1,14 +1,49 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-BR">
+  <head>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="{% static 'clientes/css/clientes.css' %}">
     <link rel="stylesheet" href="{% static 'general/css/base.css' %}">
     <link rel="stylesheet" href="{% static 'general/css/general.css' %}">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
     
-</body>
+    {% block 'head' %}{% endblock %}
+
+    <title>{% block 'title' %}{% endblock %}</title>
+  </head>
+  <body>
+    
+    <section class="card-dashboard">
+          {% block 'dashboardL'%}
+          {% endblock %}
+          
+          {% comment %} <div class="p">
+            {%block 'form'%}
+            {%endblock%}
+          </div> {% endcomment %}
+    
+    </section>
+    
+   
+      <section class="card-dashboardP">
+        {% block 'dashboardP'%}
+
+        {% endblock %}
+      </section> 
+
+    <section class="card-dashboardC">
+      {% block 'dashboardC'%}
+          {% endblock %}
+    </section>
+
+
+    {% block 'body' %}
+    {% endblock %}
+    <script src="{% static 'general/js/base.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
