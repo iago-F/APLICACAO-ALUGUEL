@@ -1,0 +1,7 @@
+{% for casa in casas %}
+  <br /> <br />
+  <img src="{{ Casa.imagem.url }}" alt="Imagem da Casa" />
+  <p>Endereço:{{ casa.endereco }}</p>
+  <p>Número de Quartos: {{ casa.num_quarto }}</p>
+  <p>Preço Total: {{ casa.preco_total }}</p>
+{% endfor %}

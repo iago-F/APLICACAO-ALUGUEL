@@ -10,7 +10,7 @@
 {% block 'dashboardL'%}
 
     
-    
+   <div class="boxL"> 
     <div class="form">
         <form action="{% url 'Login'%}"  method="POST">
             {% csrf_token %}
@@ -21,6 +21,6 @@
             <a class="button" href="{% url 'cadastro'%}">Cadastre-se</a>
         </form>
     </div>
-
+    </div>
 
 {% endblock%}

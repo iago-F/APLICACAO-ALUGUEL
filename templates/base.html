@@ -17,27 +17,23 @@
   <body>
     
     <section class="card-dashboard">
-          {% block 'dashboardL'%}
-          {% endblock %}
           
-          {% comment %} <div class="p">
-            {%block 'form'%}
-            {%endblock%}
-          </div> {% endcomment %}
-    
-    </section>
-    
-   
-      <section class="card-dashboardP">
-        {% block 'dashboardP'%}
-
-        {% endblock %}
-      </section> 
+      {% block 'dashboardL'%}
+      {% endblock %}
+          
+    </section> 
 
     <section class="card-dashboardC">
       {% block 'dashboardC'%}
-          {% endblock %}
+      {% endblock %}
     </section>
+
+
+  <section class="card-dashboardP">
+      {% block 'dashboardP'%}
+
+      {% endblock %}
+  </section> 
 
 
     {% block 'body' %}

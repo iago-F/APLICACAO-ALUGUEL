@@ -11,6 +11,10 @@
     {% comment %} align-intems:center; {% endcomment %}
 
 }
+
+.nav-item::marker {
+    display: none;
+}
 .card-dashboardC  {
 
     {% comment %} background-color: #FF6B00; {% endcomment %}
@@ -24,10 +28,265 @@
     {% comment %} align-intems:center; {% endcomment %}
 
 }
+
+.card-dashboardP  {
+
+    
+    width: 550px;
+    height: 550px;
+    margin-top: 40px; 
+    text-align: center;
+    padding: 20px;
+    cursor: pointer;
+    display:flex;
+    
+
+}
+
+.inputsP{
+    display:flex;
+    flex-direction: column;
+    width: 350px;
+    align-items:center;
+    border: solid #76BDFF 4px;
+    height: 55px;
+    padding-left:5px;
+   
+}
+
+.boxL{
+    
+    margin-left: 550px;
+
+
+
+
+
+}
+
+.navPrincipal {
+    display: grid;
+    grid-template-columns: 100px 100px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 75px;
+    background-color: white;
+}
+
+.boxUsers {
+    display: flex;
+    justify-content: row;
+    margin-top: 15px;
+    gap: 5px;
+}
+
+.box-usuario {
+        position: relative;
+        display: inline-block;
+        list-style: none;
+        
+      }
+
+.container{
+
+    margin-top: 35px;
+    margin-left: 35px;
+
+}
+
+.InfosUser{
+    
+    font-size: 35px;
+}
+
+.InfoUsertext{
+
+    margin-bottom: 0px;
+    font-weight:500;
+
+}
+
+.boxCamposUsers{
+
+    margin-top: 20px;
+    
+    width: 900px;
+
+
+}
+
+.boxinputsUser{
+
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    margin-bottom:15px;
+    grid-column-gap: 75px;
+    grid-row-gap: 18px;
+
+}
+
+
+
+
+
+.buttonsUersDelet {
+    float: inline-start;
+    background-color: #e35b4f;
+    border: solid 1px black;
+    border-radius: 14px;
+    height: 35px;
+    width: 150px;
+    box-sizing: border-box;
+    margin-top:30px;
+    margin-right: 800px; /* Ajuste conforme necessário */
+}
+
+.form-container{
+
+    
+    display: flex;
+    justify-content: space-between; /* Ajuste conforme necessário para a separação desejada entre os botões */
+    align-items: center; 
+
+}
+
+.buttonsUersUpdate{
+    background-color:#90ee90;
+    border: solid 1px black;
+    border-radius: 14px;
+    height: 35px;
+    margin-top15px;
+    margin-left:900px;
+    width: 150px; /* Ou ajuste conforme necessário */
+    box-sizing: border-box;
+    
+}
+
+
+
+.inputsUser{
+    max-width: 450px;
+    width:250px;
+    border: solid 1px black;
+    border-radius: 14px;
+    padding-left:5px;
+    height: 55px;
+
+}
+
+.InfoUsertextEmail{
+
+    font-size: 20px;
+    
+}
+
+.IconeLogin{
+
+    margin-top: 3px;
+    margin-left: px
+    
+   
+
+}
+
+.boxbutton{
+    {% comment %} display: flex;
+    gap: 10px; {% endcomment %}
+}
+
+.boxNameUser {
+    border: solid black 2px;
+    border-radius: 28px;
+    margin-right: 133px;
+    margin-top: 3px;
+    margin-bottom: 8px;
+    padding-top: 9.5px;
+    font-weight:500;
+    font-size: 17px;
+    width: 130px;
+    height: 40px;
+}
+
+.NameUser {
+    margin-right: 22px;
+    margin-top: 10px;
+    padding-left: 8px;
+}
+
+
+
+
+.botao-usuario{
+    border:none;
+    background:none;
+    
+
+}
+
+.a nav-link{
+
+    whidth: 50px;
+}
+
+.LogoPrincipal {
+    display: flex;
+    justify-content: center;
+    margin-left: 50px;
+    margin-top: 9px;
+    width: 80px;
+    height: 60px;
+}
+  
+  .box-usuario {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 8px;
+    z-index: 1;
+  }
+  
+  .box-usuario.active .dropdown-menu {
+    display: block;
+  }
+  .box-usuario ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+  
+  .dropdown-item {
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+    color: #333;
+  } 
+
+.bodyPlataforma{
+
+    display:flex;
+    flex-direction: column;
+    background-color: #87cefa;
+    
+
+}
+
+
 body{
     display:flex;
+    flex-direction: column;
     justify-content:center;
     margin-top:50;
+    background-color: #87cefa;
 }
 
 bodyC{

@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 {%load static %} 
 
+{% block 'head'%}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+{% endblock%}
 
 {% block 'dashboardC'%}
 
-
-    <form action="{% url 'cadastro'%}" method="POST">
+    <div class="boxC">
+    <form action="{% url 'cadastro'%}" method="POST" class="container">
         {% csrf_token %}
         <img src="{% static 'clientes/images/LOGO_CASA_PRINCIPAL.png' %}">
         <input type="text" class="inputsC" placeholder="usuario" name="username"><br><br>
@@ -17,7 +22,7 @@
         <input type="password" class="inputsC" placeholder="senha" name="senha">
         <input type="submit"  class="buttonC" value="Cadastre-se">
     </form>
-
+    </div>
 
 
 {% endblock%}

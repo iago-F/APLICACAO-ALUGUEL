@@ -1,0 +1,14 @@
+{% load static %}
+<form action="{% url 'cadastroCasa' %}" method="POST" enctype="multipart/form-data" class="container">
+  {% csrf_token %}
+
+  <img src="{% static 'clientes/images/LOGO_CASA_PRINCIPAL.png' %}" />
+  <input type="text" placeholder="Endereco" name="endereco" /><br /><br />
+  <input type="text" placeholder="Quantidade de Quartos" name="num_quarto" /><br /><br />
+  <input type="text" placeholder="Quantidade de Banheiros" name="num_banheiro" /><br /><br />
+  <input type="text" placeholder="Area m2" name="area" /><br /><br />
+  <input type="text" placeholder="Descrição" name="descricao" /><br /><br />
+  <input type="text" placeholder="Preco Total" name="preco_total" /><br /><br />
+  <input type="file" placeholder="" accept="image/*" name="imagem" />
+  <input type="submit" value="Cadastrar" />
+</form>

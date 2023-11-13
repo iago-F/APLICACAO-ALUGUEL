@@ -7,3 +7,29 @@
     --differential-color: #ffe29a;
 
 }
+
+
+.card-dashboardP  {
+
+    
+    width: 550px;
+    height: 550px;
+    margin-top: 40px; 
+    text-align: center;
+    padding: 20px;
+    cursor: pointer;
+    display:flex;
+    
+
+}
+
+.inputsP{
+    display:flex;
+    flex-direction: column;
+    width: 350px;
+    align-items:center;
+    border: solid #76BDFF 4px;
+    height: 55px;
+    padding-left:5px;
+   
+}
