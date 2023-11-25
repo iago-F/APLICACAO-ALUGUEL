@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {%load static %} 
-
+{% comment %} {% if login_invalido %}
+<script>
+    alert("Usuário ou senha incorretos. Tente novamente.");
+</script>
+{% endif %} {% endcomment %}
 
 {% block 'head'%}
 
@@ -14,7 +18,7 @@
     <div class="form">
         <form action="{% url 'Login'%}"  method="POST">
             {% csrf_token %}
-            <img src="{% static 'clientes/images/LOGO_CASA_PRINCIPAL.png' %}">
+           <a href="{% url 'HomePage'%}"> <img src="{% static 'clientes/images/LOGO_CASA_PRINCIPAL.png' %}"> </a>
             <input type="text" class="inputs" placeholder="Usuário" name="nome" class="">
             <input type="password"class="inputs" placeholder="Senha" name="senha">
             <input type="submit" class="button"value="Entrar">

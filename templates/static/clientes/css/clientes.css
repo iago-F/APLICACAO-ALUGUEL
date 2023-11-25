@@ -71,7 +71,10 @@
     justify-content: space-between;
     width: 100%;
     height: 75px;
+    margin-top:px;
     background-color: white;
+    border-bottom: solid black 1px;
+    border-top: solid black 1px;
 }
 
 .boxUsers {
@@ -88,11 +91,23 @@
         
       }
 
+      
+.box-usuario:focus {
+    outline: none;
+  }
+
+.botao-usuario:focus {
+        outline: none;
+      }
+
 .container{
 
-    margin-top: 35px;
+    margin-top: 55px;
     margin-left: 35px;
-
+    background-color: #a1b1dd;
+    border: solid black 1px;
+    border-radius: 10px;
+    height:550px;
 }
 
 .InfosUser{
@@ -116,6 +131,13 @@
 
 }
 
+.bodyHome{
+
+    background-color:#eceff8 ;
+
+
+
+}
 .boxinputsUser{
 
     display: grid;
@@ -125,8 +147,118 @@
     grid-row-gap: 18px;
 
 }
+.BoxbodyHome {
+    display: flex;
+    overflow-x: auto;
+    margin-top: 20px;
+    justify-content:center;
+    display: grid;
+    grid-template-columns: repeat(3, 400px);
+    grid-template-rows: repeat(32, 550px);
+}
 
 
+
+.bodyHome {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    max-width:350px;
+    max-height:500px;
+    border: solid black 1px;
+}
+.bodyHome a{
+
+ display:flex;
+ justify-content:center;
+ 
+    
+ 
+
+}
+
+.detalhes{
+
+    margin-top:35px;
+    
+
+
+}
+
+.detalhes button{
+
+        background-color: #ffa665;
+        border-radius: 10px;
+        padding: 5px;
+
+}
+
+#dropdownMenu{
+
+background-color:#ffa665;
+margin-top:10px;
+font-weight: 700;
+
+   
+}
+
+.dropUser {
+    
+    overflow: hidden;
+    transition: 2s; /* Adiciona uma transição de 0.3 segundos com uma curva de aceleração ease */
+}
+
+#dropdownMenu a{
+    font-weight: 600;
+}
+
+.imagemCasaUser{
+    width: 330px;
+    height:300px;
+    max-height:300px;
+    max-width: 330px;
+    object-fit: cover;
+    
+    border-radius: 12px;
+}
+
+.bodyHome p {
+    margin: 10px;
+}
+
+
+
+
+
+.TitulocasaCadCasa{
+
+    display:flex;
+    margin-left:350px;
+    width: 350px;
+    font-size: 30px;
+    font-weight:500;
+    
+
+
+}
+.boxinputsCadCasa{
+
+    whidth:550px;
+    max-width: 550px;
+    display:flex;
+    flex-wrap: column;
+    display:block;
+
+}
+
+.buttons{
+    display:flex;
+    justify-content:row;
+    gap:35px;
+    margin-top: 24px;
+}
 
 
 
@@ -137,9 +269,6 @@
     border-radius: 14px;
     height: 35px;
     width: 150px;
-    box-sizing: border-box;
-    margin-top:30px;
-    margin-right: 800px; /* Ajuste conforme necessário */
 }
 
 .form-container{
@@ -156,10 +285,7 @@
     border: solid 1px black;
     border-radius: 14px;
     height: 35px;
-    margin-top15px;
-    margin-left:900px;
-    width: 150px; /* Ou ajuste conforme necessário */
-    box-sizing: border-box;
+    width: 150px; 
     
 }
 
@@ -171,6 +297,51 @@
     border: solid 1px black;
     border-radius: 14px;
     padding-left:5px;
+    height: 55px;
+
+}
+
+.boxinputsCasa{
+    
+    width: 90px;
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    grid-column-gap: 100px;
+    grid-row-gap: 1em;
+    margin-left: 90px;
+    margin-top:50px;
+    
+}
+.formCadCasa{
+    
+
+}
+.inputsCadCasaimg{
+    width:848px;
+    height: 200px;
+    background: none;
+    border: solid 1px black;
+    border-radius: 10px;
+    
+}
+
+.buttonCadcasa{
+
+    background-color:#90ee90;
+    border: solid 1px black;
+    border-radius: 14px;
+    height: 35px;
+    width: 150px; 
+    margin-left: 450px;
+    margin-top: 10px;
+}
+
+.inputsCadCasa{
+    
+   
+    width:250px;
+    border: solid 1px black;
+    border-radius: 10px;
     height: 55px;
 
 }
@@ -275,19 +446,15 @@
 
     display:flex;
     flex-direction: column;
-    background-color: #87cefa;
+    background-color: #eceff8;;
     
 
 }
 
-
-body{
-    display:flex;
-    flex-direction: column;
-    justify-content:center;
-    margin-top:50;
-    background-color: #87cefa;
+.bodyHomePage{
+    background-color: #eceff8;
 }
+
 
 bodyC{
     display:flex;

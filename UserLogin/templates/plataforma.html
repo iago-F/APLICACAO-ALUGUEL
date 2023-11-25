@@ -9,19 +9,20 @@
     <link rel="stylesheet" href="{% static 'clientes/css/clientes.css' %}" />
     <link rel="stylesheet" href="{% static 'general/css/base.css' %}" />
     <link rel="stylesheet" href="{% static 'general/css/general.css' %}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
     <style></style>
   </head>
 
-  <body>
+  <body class="bodyPlataforma">
     <div class="navPrincipal">
-      <img src="{% static 'clientes/images/LOGO_CASA_PRINCIPAL.png' %}" class="LogoPrincipal" />
+      <a href="{% url 'HomePage' %}"><img src="{% static 'clientes/images/LOGO_CASA_PRINCIPAL.png' %}" class="LogoPrincipal" /></a>
       <div class="box-usuario" id="box-usuario">
         <div class="dropdown">
           <button class="botao-usuario" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false" onclick="toggleDropdown()">
             <div class="" id="box-usuario">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                  <a class="boxUsers nav-link">
+                  <a class="boxUsers">
                     <svg xmlns="http://www.w3.org/2000/svg" class="" width="45" height="45" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                       <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                       <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
@@ -43,8 +44,9 @@
             </div>
           </button>
           <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="{% url 'Login' %}">Login</a>
-            <a class="dropdown-item" href="{% url 'cadastro' %}">Cadastrar-se</a>
+            <a class="dropdown-item" href="{% url 'HomePage' %}">Home</a>
+            <a class="dropdown-item" href="{% url 'cadastroCasa' %}">Cadastrar Casa</a>
+            <a class="dropdown-item" href="{% url 'logout' %}">Sair</a>
             <div class="dropdown-divider"></div>
             {% comment %} <a class="dropdown-item" href="#">Sair</a> {% endcomment %}
           </div>
@@ -52,7 +54,7 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="shadow p-3 mb-5 container">
       <!-- Seu conteúdo aqui -->
       {% if request.user.is_authenticated %}
         <div class="InfosUser">
@@ -62,36 +64,9 @@
       {% else %}
         <p>O usuário não está autenticado.</p>
       {% endif %}
-      {% comment %} <div class="form-container">
-        <form method="POST" action="{% url 'Update_Usuario' %}">
-          <div class="boxCamposUsers">
-            {% csrf_token %}
-            <div class="boxinputsUser">
-              <input type="text" id="first_name" value="{{ user.first_name }}" placeholder="nome" class="inputsUser" name="first_name" />
-              <input type="text" id="last_name" value="{{ user.last_name }}" placeholder="sobre nome" class="inputsUser" name="last_name" />
-              <input type="email" id="email" name="email" value="{{ user.email }}" class="inputsUser" placeholder="E-mail" />
-              <input type="text" id="cpf" name="cpf" value="" class="inputsUser" placeholder="CPF" />
-              <input type="text" id="telefone" name="telefone" value="" class="inputsUser" placeholder="Telefone" />
-            </div>
-          </div>
-          <div class="boxbutton">
-            <input type="submit" value="Atualizar dados" class="buttonsUersUpdate" />
-          </div>
-        </form>
-
-        <form method="POST" action="{% url 'Delet_usuario' %}">
+      <div class="boxCamposUsers">
+        <form method="POST" action="{% url 'Update_Usuario' %}" id="updateForm">
           {% csrf_token %}
-          <div class="boxbutton">
-            <input type="submit" value="Excluir Conta" class="buttonsUersDelet" />
-          </div>
-        </form>
-      </div>
-    </div> {% endcomment %}
-
-    <div class="boxCamposUsers">
-      <form method="POST" action="{% url 'Update_Usuario' %}" id="updateForm">
-        {% csrf_token %}
-        <div class="boxinputsUser">
           <div class="boxinputsUser">
             <input type="text" id="first_name" value="{{ user.first_name }}" placeholder="nome" class="inputsUser" name="first_name" />
             <input type="text" id="last_name" value="{{ user.last_name }}" placeholder="sobre nome" class="inputsUser" name="last_name" />
@@ -99,21 +74,21 @@
             <input type="text" id="cpf" name="cpf" value="" class="inputsUser" placeholder="CPF" />
             <input type="text" id="telefone" name="telefone" value="" class="inputsUser" placeholder="Telefone" />
           </div>
-        </div>
-      </form>
+        </form>
+        <div class="buttons">
+          <div class="">
+            <button onclick="submitForm('updateForm')" class="buttonsUersUpdate">Atualizar dados</button>
+          </div>
 
-      <div class="boxbutton">
-        <button onclick="submitForm('updateForm')" class="buttonsUersUpdate">Atualizar dados</button>
+          <form method="POST" action="{% url 'Delet_usuario' %}" id="deleteForm">
+            {% csrf_token %}
+            <div class="">
+              <button onclick="submitForm('deleteForm')" class="buttonsUersDelet">Excluir Conta</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-
-    <form method="POST" action="{% url 'Delet_usuario' %}" id="deleteForm">
-      {% csrf_token %}
-      <div class="boxbutton">
-        <button onclick="submitForm('deleteForm')" class="buttonsUersDelet">Excluir Conta</button>
-      </div>
-    </form>
-
     <script>
       function submitForm(formId) {
         document.getElementById(formId).submit()

@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login , logout
 from django.contrib.auth.decorators import login_required
 
 
+
 #Função para cadastrar usuário. 
 def cadastroUser(request):
     if request.method == 'GET':
@@ -37,15 +38,20 @@ def cadastroUser(request):
 def Login(request):
     if request.method == "GET":
         return render(request, 'Login.html')
-    else:
+    elif request.method == "POST":
         username = request.POST.get('nome')
         senha = request.POST.get('senha')
 
-        user = authenticate(username=username, password=senha)
+        user = authenticate(request, username=username, password=senha)
 
         if user:
-            login(request,user)
-            return render(request,'plataforma.html')
+            login(request, user)
+            return redirect('HomePage')  
+        else:
+            
+            return render(request, 'Login.html', {'Login_iinvalido': True})
+
+    return render(request, 'Login.html')
 
 
 #funcção para acessar plataforma        
@@ -78,3 +84,10 @@ def atualizar_perfil(request):
 
         user.save()
         return redirect('plataforma')
+    
+
+#função para fazer o Logout
+@login_required(login_url="/auth/Login/")
+def custom_logout(request):
+        logout(request)
+        return redirect('HomePage')

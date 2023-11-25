@@ -13,11 +13,10 @@ class Casa(models.Model):
     imagem = models.ImageField(upload_to='imagens_casas/', blank=True, null=True)
     usuario = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, null=False, default=None)
 
-
-def save(self, *args, **kwargs):
-    if not self.usuario_id:
-        self.usuario = kwargs.pop('user', None)
-    super(Casa, self).save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        if not self.usuario_id:
+            self.usuario = kwargs.pop('user', None)
+        super(Casa, self).save(*args, **kwargs)
 
     def __str__(self):
         return f"Casa em {self.endereco}"
