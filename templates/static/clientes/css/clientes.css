@@ -154,7 +154,7 @@
     justify-content:center;
     display: grid;
     grid-template-columns: repeat(3, 400px);
-    grid-template-rows: repeat(32, 550px);
+    grid-template-rows: repeat(32, 700px);
 }
 
 
@@ -167,6 +167,18 @@
     border-radius: 8px;
     max-width:350px;
     max-height:500px;
+    border: solid black 1px;
+}
+
+
+.bodyMinhasCasas {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    max-width:350px;
+    max-height:600px;
     border: solid black 1px;
 }
 .bodyHome a{
@@ -190,6 +202,20 @@
 .detalhes button{
 
         background-color: #ffa665;
+        border-radius: 10px;
+        padding: 5px;
+
+}
+
+.detalhesExlcuircasa{
+
+    margin-top:35px;
+
+}
+
+.detalhesExlcuircasa button{
+
+        background-color: #fa4747;
         border-radius: 10px;
         padding: 5px;
 

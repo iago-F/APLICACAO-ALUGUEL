@@ -23,7 +23,12 @@ def imagens_aleatorias(request):
 
 def visualizar_detalhes_casa(request, casa_id):
     casa = get_object_or_404(Casa, id=casa_id)
+    
+    context = {'casa': casa, 'usuario_cadastrou': casa.usuario}
     return render(request, 'DetalhesCasa.html', {'casa': casa})
+
+
+
 
 
 

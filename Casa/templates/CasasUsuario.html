@@ -26,10 +26,9 @@
     </script>
   </head>
 
-  <body class="bodyHomePage">
+  <body class="bodyPlataforma">
     <div class="navPrincipal">
       <a href="{% url 'HomePage' %}"><img src="{% static 'clientes/images/LOGO_CASA_PRINCIPAL.png' %}" class="LogoPrincipal" /></a>
-
       <div class="box-usuario" id="box-usuario">
         <div class="dropdown">
           <button class="botao-usuario" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false" onclick="toggleDropdown()">
@@ -48,7 +47,7 @@
                             <p>Ola, {{ request.user.username }}</p>
                           </div>
                         {% else %}
-                          <p>Login</p>
+                          <p>O usuário não está autenticado.</p>
                         {% endif %}
                       </div>
                     </div>
@@ -61,32 +60,34 @@
             <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" href="{% url 'plataforma' %}">Perfil</a>
               <a class="dropdown-item" href="{% url 'cadastroCasa' %}">Cadastrar Casa</a>
-              <a class="dropdown-item" href="{% url 'casas_reservadas' %}">Minhas Reservas</a>
-              <a class="dropdown-item" href="{% url 'casas_do_usuario' %}">Minhas Casas</a>
+              <a class="dropdown-item" href="{% url 'HomePage' %}">Home Page</a>
               <div class="dropdown-divider"></div>
               {% comment %} <a class="dropdown-item" href="#">Sair</a> {% endcomment %}
             </div>
           {% else %}
-            <div class="dropdown-menu dropUser" id="dropdownMenu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="{% url 'Login' %}">Entrar</a>
-              <a class="dropdown-item" href="{% url 'cadastro' %}">Cadastrar-se</a>
-              <div class="dropdown-divider"></div>
-              {% comment %} <a class="dropdown-item" href="#">Sair</a> {% endcomment %}
-            </div>
+
           {% endif %}
         </div>
       </div>
     </div>
+
     <div class="BoxbodyHome">
-      {% for casa in casas %}
-        <div class="bodyHome">
+      {% for casa in casas_do_usuario %}
+        <div class="bodyMinhasCasas">
           {% if casa.imagem %}
             <img src="{{ casa.imagem.url }}" alt="Imagem da Casa" class="imagemCasaUser" />
           {% endif %}
+          <p>{{ casa.endereco }}</p>
           <p>{{ casa.num_quarto }} Quartos</p>
           <p>{{ casa.num_banheiro }} Banheiros</p>
+          <p>{{ casa.descricao }}</p>
           <p>Preço Total: {{ casa.preco_total }}</p>
-          <a class="detalhes" href="{% url 'detalhes_casa' casa.id %}"><button>+ Detalhes</button></a>
+          <form action="{% url 'excluir_casa' casa.id %}" method="post">
+            {% csrf_token %}
+            <div class="detalhesExlcuircasa">
+              <button type="submit">Excluir Casa</button>
+            </div>
+          </form>
         </div>
       {% endfor %}
     </div>

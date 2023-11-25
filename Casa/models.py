@@ -20,3 +20,13 @@ class Casa(models.Model):
 
     def __str__(self):
         return f"Casa em {self.endereco}"
+
+
+
+class Reserva(models.Model):
+    casa = models.ForeignKey(Casa, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    data_reserva = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Reserva da casa em {self.casa.endereco} por {self.usuario.username}"
