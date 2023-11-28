@@ -70,16 +70,24 @@
         <p>{{ casa.num_banheiro }} Banheiros</p>
         <p>{{ casa.descricao }}</p>
         <p>Preço Total: {{ casa.preco_total }}</p>
-        <p>Propietario: {{ usuario_cadastrou.username }}</p>
+        <p>Propietario: {{ casa.usuario_cadastrou.username }}</p>
 
         {% for message in messages %}
           ({{ message }})
         {% endfor %}
       </div>
 
-      <form action="{% url 'fazer_reserva' casa.id %}" method="post" id="formReserva">
+      {% comment %} <form action="{% url 'fazer_reserva' casa.id %}" method="post" id="formReserva">
         {% csrf_token %}
         <button type="submit" id="btnFazerReserva" claa="form-control">Fazer Reserva</button>
+      </form> {% endcomment %}
+      <form method="post" action="{% url 'fazer_reserva' casa.id %}">
+        {% csrf_token %}
+
+        <label for="id_data_final">Data Final:</label>
+        <input type="date" id="id_data_final" name="data_final" required />
+
+        <button type="submit">Fazer Reserva</button>
       </form>
 
       <!-- Exibir Mensagem de Reserva -->
@@ -102,45 +110,45 @@
     </script>
     <script>
       /*  document.addEventListener('DOMContentLoaded', function () {
-                                            const formReserva = document.getElementById('formReserva')
-                                            const btnFazerReserva = document.getElementById('btnFazerReserva')
-                                          
-                                            // Verifica se o formulário e o botão existem antes de adicionar os eventos
-                                            if (formReserva && btnFazerReserva) {
-                                              formReserva.addEventListener('submit', function (event) {
-                                                // Impede o envio padrão do formulário
-                                                event.preventDefault()
-                                          
-                                                // Envia a solicitação de reserva via AJAX
-                                                fetch("{% url 'fazer_reserva' casa.id %}", {
-                                                  method: 'POST',
-                                                  headers: {
-                                                    'X-CSRFToken': '{{ csrf_token }}'
-                                                  },
-                                                  body: new FormData(formReserva)
-                                                })
-                                                  .then((response) => response.json())
-                                                  .then((data) => {
-                                                    // Verifica se a reserva foi bem-sucedida
-                                                    if (data.success) {
-                                                      alert('Reserva realizada com sucesso.')
-                                                    } else {
-                                                      // Verifica se o erro indica que a casa já foi reservada
-                                                      if (data.error === 'casa_ja_reservada') {
-                                                        Esta casa já foi reservada
-                                                      } else {
-                                                        alert('Erro ao fazer reserva: ' + data.error)
-                                                      }
-                                                    }
-                                                  })
-                                                  .catch((error) => {
-                                                    console.error('Erro ao fazer reserva:', error)
-                                                    alert('Erro ao fazer reserva. Por favor, tente novamente.')
-                                                  })
-                                              })
-                                            }
-                                          })
-                                          */
+                                                                                const formReserva = document.getElementById('formReserva')
+                                                                                const btnFazerReserva = document.getElementById('btnFazerReserva')
+                                                                              
+                                                                                // Verifica se o formulário e o botão existem antes de adicionar os eventos
+                                                                                if (formReserva && btnFazerReserva) {
+                                                                                  formReserva.addEventListener('submit', function (event) {
+                                                                                    // Impede o envio padrão do formulário
+                                                                                    event.preventDefault()
+                                                                              
+                                                                                    // Envia a solicitação de reserva via AJAX
+                                                                                    fetch("{% url 'fazer_reserva' casa.id %}", {
+                                                                                      method: 'POST',
+                                                                                      headers: {
+                                                                                        'X-CSRFToken': '{{ csrf_token }}'
+                                                                                      },
+                                                                                      body: new FormData(formReserva)
+                                                                                    })
+                                                                                      .then((response) => response.json())
+                                                                                      .then((data) => {
+                                                                                        // Verifica se a reserva foi bem-sucedida
+                                                                                        if (data.success) {
+                                                                                          alert('Reserva realizada com sucesso.')
+                                                                                        } else {
+                                                                                          // Verifica se o erro indica que a casa já foi reservada
+                                                                                          if (data.error === 'casa_ja_reservada') {
+                                                                                            Esta casa já foi reservada
+                                                                                          } else {
+                                                                                            alert('Erro ao fazer reserva: ' + data.error)
+                                                                                          }
+                                                                                        }
+                                                                                      })
+                                                                                      .catch((error) => {
+                                                                                        console.error('Erro ao fazer reserva:', error)
+                                                                                        alert('Erro ao fazer reserva. Por favor, tente novamente.')
+                                                                                      })
+                                                                                  })
+                                                                                }
+                                                                              })
+                                                                              */
     </script>
   </body>
 </html>

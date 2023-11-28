@@ -1,5 +1,5 @@
 from django import forms
-from .models import Casa
+from .models import Casa , Reserva
 
 
 class CasaForm(forms.ModelForm):
@@ -14,3 +14,9 @@ class CasaForm(forms.ModelForm):
         if commit:
             instance.save()
         return instance
+    
+class ReservaForm(forms.ModelForm):
+    class Meta:
+        model = Reserva
+        fields = ['data_final']
+        widgets = {'data_final': forms.DateInput(attrs={'type': 'date'})}
