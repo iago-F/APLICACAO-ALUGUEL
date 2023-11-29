@@ -154,7 +154,7 @@
     justify-content:center;
     display: grid;
     grid-template-columns: repeat(3, 400px);
-    grid-template-rows: repeat(32, 700px);
+    grid-template-rows: repeat(32, 530px);
 }
 
 
@@ -169,6 +169,54 @@
     max-height:500px;
     border: solid black 1px;
 }
+
+
+.BoxbodyHomeDetalhesCasa {
+    display: flex;
+    overflow-x: auto;
+    margin-top: 20px;
+    justify-content:center;
+    display: grid;
+    grid-template-columns: repeat(1, 600px);
+    grid-template-rows: repeat(32, 700px);
+}
+
+
+
+.bodyHomeDetalhesCasa{
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    max-width: 500px;
+    max-height: 680px;
+    border: solid black 1px;
+}
+
+
+
+.formselectHome{
+    max-width: 250px;
+    display: inline-block !important;  
+}
+
+
+.BoxbodyHomeCasasUsuario {
+    display: flex;
+    overflow-x: auto;
+    margin-top: 20px;
+    justify-content:center;
+    display: grid;
+    grid-template-columns: repeat(3, 400px);
+    grid-template-rows: repeat(32, 730px);
+}
+
+
+
+
+
+
 
 
 .bodyMinhasCasas {
@@ -246,7 +294,15 @@ font-weight: 700;
     max-height:300px;
     max-width: 330px;
     object-fit: cover;
-    
+    border-radius: 12px;
+}
+
+.imagemCasaUserDetalhes{
+    width: 430px;
+    height:300px;
+    max-height:300px;
+    max-width: 490px;
+    object-fit: cover;
     border-radius: 12px;
 }
 

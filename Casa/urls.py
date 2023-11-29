@@ -8,4 +8,5 @@ urlpatterns = [
     path('casas_reservadas/', views.Casas_Reservadas, name='casas_reservadas'),
     path('casas_do_usuario/', views.casas_do_usuario, name='casas_do_usuario'),
     path('excluir_casa/<int:casa_id>/', views.excluir_casa, name='excluir_casa'),
+    path('listar_casas/', views.listar_casas, name='listar_casas'),
 ]

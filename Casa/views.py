@@ -6,9 +6,10 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Casa, Reserva
 from django.contrib import messages
-from .forms import CasaForm
+from .forms import CasaForm , FiltroCasaForm
 import datetime
 from datetime import datetime
+
 
 
 
@@ -74,7 +75,7 @@ def Casas_Reservadas(request):
     return render(request, 'Casas_Reservadas.html', context)
 
 
-
+#Listar as casas do usuário
 @login_required
 def casas_do_usuario(request):
     # Obtém todas as casas cadastradas pelo usuário logado
@@ -86,7 +87,7 @@ def casas_do_usuario(request):
     return render(request, 'casas_do_usuario.html', context)
 
 
-
+#Excluir casas
 def excluir_casa(request, casa_id):
     casa = get_object_or_404(Casa, id=casa_id)
 
@@ -100,4 +101,28 @@ def excluir_casa(request, casa_id):
 
     
 
+#Funcção para Filtrar as casas
+def listar_casas(request):
+    form = FiltroCasaForm(request.GET)
 
+    if form.is_valid():
+        escolha_critero = form.cleaned_data.get('escolha_critero')
+        quantidade = form.cleaned_data.get('quantidade')
+
+        # Filtra as casas com base nos critérios selecionados
+        if escolha_critero == 'num_quartos':
+            casas = Casa.objects.filter(num_quarto=quantidade)
+        elif escolha_critero == 'num_banheiros':
+            casas = Casa.objects.filter(num_banheiro=quantidade)
+        elif escolha_critero == 'preco_total':
+            casas = Casa.objects.filter(preco_total=quantidade)
+        else:
+            casas = Casa.objects.all()
+
+        context = {'casas': casas, 'form': form}
+        return render(request, 'listagem_casas.html', context)
+
+    # Se o formulário não for válido, exibe todas as casas
+    casas = Casa.objects.all()
+    context = {'casas': casas, 'form': form}
+    return render(request, 'listagem_casas.html', context)

@@ -1,0 +1,32 @@
+{% comment %} <!DOCTYPE html>
+<html>
+  <head>
+    <title>Pesquisa de Casas</title>
+  </head>
+  <body>
+    <h2>Pesquisa de Casas</h2>
+
+    {% if casas_resultado %}
+      <h3>Resultados da Pesquisa:</h3>
+      <ul>
+        {% for casa in casas_resultado %}
+          <li>{{ casa.endereco }} - {{ casa.num_quartos }} quartos, {{ casa.num_banheiros }} banheiros</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </body>
+</html> {% endcomment %}
+
+{% for casa in casas %}
+  <div class="casa">
+    <h3>{{ casa.endereco }}</h3>
+    <p>Número de Quartos: {{ casa.num_quarto }}</p>
+    <p>Número de Banheiros: {{ casa.num_banheiro }}</p>
+    <p>Preço Total: R$ {{ casa.preco_total }}</p>
+    <!-- Adicione mais informações conforme necessário -->
+
+    {% if casa.imagem %}
+      <img src="{{ casa.imagem.url }}" alt="Imagem da Casa" />
+    {% endif %}
+  </div>
+{% endfor %}

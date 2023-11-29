@@ -19,6 +19,7 @@ def imagens_aleatorias(request):
     todas_as_casas = list(Casa.objects.all())
     casas_aleatorias = sample(todas_as_casas, min(len(todas_as_casas), 9))
     return render(request, 'HomePage.html', {'casas': casas_aleatorias})
+    
 
 
 def visualizar_detalhes_casa(request, casa_id):
