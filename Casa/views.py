@@ -4,11 +4,12 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Casa, Reserva
+from .models import Casa, Reserva, Pagamento
 from django.contrib import messages
 from .forms import CasaForm , FiltroCasaForm
 import datetime
 from datetime import datetime
+from django.db import transaction
 
 
 
@@ -32,11 +33,37 @@ def cadastrarCasa(request):
 
 
 
-@login_required
+# @login_required
+# def fazer_reserva(request, casa_id):
+#     casa = get_object_or_404(Casa, id=casa_id)
+
+#     if request.method == 'POST':
+#         data_final_str = request.POST.get('data_final')
+
+#         if not data_final_str:
+#             messages.error(request, 'Por favor, escolha uma data para fazer a reserva.')
+#             return redirect('detalhes_casa', casa_id=casa.id)
+
+#         data_final = datetime.strptime(data_final_str, '%Y-%m-%d').date()
+
+#         # Verifica se a casa já tem uma reserva
+#         if Reserva.objects.filter(casa=casa, data_final__gte=data_final).exists():
+#             messages.error(request, 'Esta casa já foi reservada para a data escolhida.')
+#             return redirect('detalhes_casa', casa_id=casa.id)
+
+#         # Cria a reserva associando a casa, o usuário e a data final
+#         Reserva.objects.create(casa=casa, usuario=request.user, data_final=data_final)
+
+#         # Redireciona para a página de detalhes da casa com uma mensagem de sucesso
+#         messages.success(request, 'Reserva realizada com sucesso.')
+#         return redirect('detalhes_casa', casa_id=casa.id)
+
+#     return render(request, 'DetalhesCasa.html', {'casa': casa@login_required
 def fazer_reserva(request, casa_id):
     casa = get_object_or_404(Casa, id=casa_id)
 
     if request.method == 'POST':
+        numero_cartao = request.POST.get('numero_cartao')
         data_final_str = request.POST.get('data_final')
 
         if not data_final_str:
@@ -51,7 +78,14 @@ def fazer_reserva(request, casa_id):
             return redirect('detalhes_casa', casa_id=casa.id)
 
         # Cria a reserva associando a casa, o usuário e a data final
-        Reserva.objects.create(casa=casa, usuario=request.user, data_final=data_final)
+        with transaction.atomic():
+            reserva = Reserva.objects.create(casa=casa, usuario=request.user, data_final=data_final)
+
+            # Obtém o valor da casa para usar no pagamento
+            valor_do_pagamento = casa.valor
+
+            # Cria a instância do Pagamento associada à reserva
+            pagamento = Pagamento.objects.create(casa=casa, usuario=request.user, numero_cartao=numero_cartao, valor=valor_do_pagamento, reserva=reserva)
 
         # Redireciona para a página de detalhes da casa com uma mensagem de sucesso
         messages.success(request, 'Reserva realizada com sucesso.')
@@ -60,6 +94,24 @@ def fazer_reserva(request, casa_id):
     return render(request, 'DetalhesCasa.html', {'casa': casa})
 
 
+
+
+def processar_pagamento(request, reserva_id):
+    # Obtém a instância da reserva
+    minha_reserva = Reserva.objects.get(id=reserva_id)
+
+    # Cria um objeto Pagamento associado a essa reserva
+    pagamento = Pagamento.objects.create(
+        casa=minha_reserva.casa,
+        usuario=minha_reserva.usuario,
+        numero_cartao=numero_cartao, 
+        valor=minha_reserva.casa.valor,  # Substitua pelo valor real
+        reserva=minha_reserva
+    )
+
+    # Outras lógicas de processamento de pagamento, redirecionamento, etc.
+
+    return render(request, 'processamento_pagamento.html', {'pagamento': pagamento})
 
 
 
@@ -99,6 +151,18 @@ def excluir_casa(request, casa_id):
         # Caso o usuário não tenha permissão, você pode exibir uma mensagem ou redirecionar para outra página
         return render(request, 'mensagem_sem_permissao.html')
 
+
+#Excluir_Reserva 
+def excluir_reserva_casa(request, reserva_id):
+    reserva = get_object_or_404(Reserva, id=reserva_id)
+
+    # Verifica se o usuário tem permissão para excluir a casa
+    if request.user == reserva.usuario:
+        reserva.delete()
+        return redirect('casas_reservadas')
+    else:
+        # Caso o usuário não tenha permissão, você pode exibir uma mensagem ou redirecionar para outra página
+        return render(request, 'HomePage.html')
     
 
 #Funcção para Filtrar as casas
@@ -126,3 +190,23 @@ def listar_casas(request):
     casas = Casa.objects.all()
     context = {'casas': casas, 'form': form}
     return render(request, 'listagem_casas.html', context)
+
+
+
+#Atualizar Casas Cadastradas
+@login_required 
+def atualizar_casa(request, casa_id):
+    casa = get_object_or_404(Casa, pk=casa_id)
+
+    if request.method == 'POST':
+        casa.endereco = request.POST.get('endereco')
+        casa.num_quarto = request.POST.get('num_quarto')
+        casa.num_banheiro = request.POST.get('num_banheiro')
+        casa.descricao = request.POST.get('descricao')
+        casa.preco_total = request.POST.get('preco_total')
+        casa.save()
+        return redirect('detalhes_casa', casa_id=casa.id)  
+
+    return render(request, 'atualizar_casa.html', {'casa': casa})
+
+

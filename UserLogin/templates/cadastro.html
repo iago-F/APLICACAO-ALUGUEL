@@ -1,28 +1,116 @@
-{% extends 'base.html' %}
-{%load static %} 
+{% load static %}
 
-{% block 'head'%}
+{% load static %}
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'clientes/css/clientes.css' %}" />
+    <link rel="stylesheet" href="{% static 'general/css/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'general/css/general.css' %}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+    <style></style>
+  </head>
 
-{% endblock%}
-
-{% block 'dashboardC'%}
-
+  <body class="bodyPlataforma">
+    <div class="navPrincipal">
+      <a href="{% url 'HomePage' %}"><img src="{% static 'clientes/images/LOGO_CASA_PRINCIPAL.png' %}" class="LogoPrincipal" /></a>
+      <div class="box-usuario" id="box-usuario">
+        <div class="dropdown">
+          <button class="botao-usuario" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false" onclick="toggleDropdown()">
+            <div class="" id="box-usuario">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="boxUsers">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="" width="45" height="45" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                      <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                    </svg>
+                    <div class="boxNameUser">
+                      <div class="">
+                        {% if request.user.is_authenticated %}
+                          <div class="">
+                            <p>Ola, {{ request.user.username }}</p>
+                          </div>
+                        {% else %}
+                          <p>Login</p>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </button>
+          {% if request.user.is_authenticated %}
+            <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="{% url 'plataforma' %}">Perfil</a>
+              <a class="dropdown-item" href="{% url 'cadastroCasa' %}">Cadastrar Casa</a>
+              <a class="dropdown-item" href="{% url 'casas_reservadas' %}">Minhas Reservas</a>
+              <a class="dropdown-item" href="{% url 'casas_do_usuario' %}">Minhas Casas</a>
+              <a class="dropdown-item" href="{% url 'logout' %}">Sair</a>
+              <div class="dropdown-divider"></div>
+              {% comment %} <a class="dropdown-item" href="#">Sair</a> {% endcomment %}
+            </div>
+          {% else %}
+            <div class="dropdown-menu dropUser" id="dropdownMenu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="{% url 'Login' %}">Entrar</a>
+              <a class="dropdown-item" href="{% url 'HomePage' %}">Home</a>
+              <div class="dropdown-divider"></div>
+              {% comment %} <a class="dropdown-item" href="#">Sair</a> {% endcomment %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div id="criar-usuario" class="criar-usuario">
+      {% if usuario_existe %}
+        <div class="alert alert-danger" role="alert">Esse nome de usuário já está em uso. Por favor, tente outro.</div>
+        {% comment %}
+      {% else %}
+        <div class="alert alert-success" role="alert">Usuário cadastrado com sucesso</div> {% endcomment %}
+      {% endif %}
+    </div>
     <div class="boxC">
-    <form action="{% url 'cadastro'%}" method="POST" class="container">
+      <form action="{% url 'cadastro' %}" method="POST" class="FormCadastroUser">
         {% csrf_token %}
-        <img src="{% static 'clientes/images/LOGO_CASA_PRINCIPAL.png' %}">
-        <input type="text" class="inputsC" placeholder="usuario" name="username"><br><br>
-        <input type="text" class="inputsC" placeholder="nome" name="first_name"><br><br>
-        <input type="text" class="inputsC" placeholder="ultimo nome" name="last_name"><br><br>
-        <input type="text" class="inputsC" placeholder="CPF" name="CPF"><br><br>
-        <input type="email" class="inputsC" placeholder="E-mail" name="email"><br><br>
-        <input type="tel" class="inputsC" placeholder="Telefone" name="telefone"><br><br>
-        <input type="password" class="inputsC" placeholder="senha" name="senha">
-        <input type="submit"  class="buttonC" value="Cadastre-se">
-    </form>
+        <div class="boxInputsCadastro">
+          <img src="{% static 'clientes/images/LOGO_CASA_PRINCIPAL.png' %}" />
+          <input type="text" class="inputsC" placeholder="usuario" name="username" /><br />
+          <input type="text" class="inputsC" placeholder="nome" name="first_name" /><br />
+          <input type="text" class="inputsC" placeholder="ultimo nome" name="last_name" /><br />
+          <input type="text" class="inputsC" placeholder=" Data de Nascimento" name="dt_nasc" /><br />
+          <input type="text" class="inputsC" placeholder="CPF" name="cpf" /><br />
+          <input type="email" class="inputsC" placeholder="E-mail" name="email" /><br />
+          <input type="text" class="inputsC" placeholder="Instagram" name="instagram" /><br />
+          <input type="tel" class="inputsC" placeholder="Telefone" name="telefone" /><br />
+          <input type="password" class="inputsC" placeholder="senha" name="senha" />
+          <input type="submit" class="buttonC" value="Cadastre-se" />
+        </div>
+      </form>
     </div>
 
+    <script>
+      function submitForm(formId) {
+        document.getElementById(formId).submit()
+      }
+    </script>
 
-{% endblock%}
+    <script>
+      function toggleDropdown() {
+        const boxUsuario = document.getElementById('box-usuario')
+        boxUsuario.classList.toggle('active')
+      }
+      
+      window.onclick = function (event) {
+        const boxUsuario = document.getElementById('box-usuario')
+        if (!event.target.matches('.botao-usuario') && !boxUsuario.contains(event.target)) {
+          boxUsuario.classList.remove('active')
+        }
+      }
+    </script>
+  </body>
+</html>

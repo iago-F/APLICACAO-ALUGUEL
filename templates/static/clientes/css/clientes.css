@@ -84,6 +84,22 @@
     gap: 5px;
 }
 
+.boxUsers p {
+    color: black ;
+    text-decoration: none;
+}
+
+
+.boxUsers svg {
+
+color: black;
+
+
+
+}
+
+
+
 .box-usuario {
         position: relative;
         display: inline-block;
@@ -147,14 +163,52 @@
     grid-row-gap: 18px;
 
 }
+
+.FormCadastroUser{
+
+    display:flex;
+    justify-content: center;
+
+
+
+}
+
+.buttonsCasaUser{
+
+    display:flex;
+    justify-content:center;
+    gap: 8px;
+}
+
+
+
+.boxInputsCadastro img{
+
+    margin-left: 60px;
+
+
+}
+
+
 .BoxbodyHome {
     display: flex;
     overflow-x: auto;
-    margin-top: 20px;
+    margin-top: 120px;
     justify-content:center;
     display: grid;
     grid-template-columns: repeat(3, 400px);
     grid-template-rows: repeat(32, 530px);
+}
+
+
+.BoxbodyHomeReserva {
+    display: flex;
+    overflow-x: auto;
+    margin-top: 30px;
+    justify-content:center;
+    display: grid;
+    grid-template-columns: repeat(3, 400px);
+    grid-template-rows: repeat(32, 600px);
 }
 
 
@@ -171,6 +225,18 @@
 }
 
 
+.bodyHomeReserva {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    max-width:350px;
+    max-height:590px;
+    border: solid black 1px;
+}
+
+
 .BoxbodyHomeDetalhesCasa {
     display: flex;
     overflow-x: auto;
@@ -178,7 +244,7 @@
     justify-content:center;
     display: grid;
     grid-template-columns: repeat(1, 600px);
-    grid-template-rows: repeat(32, 700px);
+    grid-template-rows: repeat(1, 700px);
 }
 
 
@@ -199,7 +265,69 @@
 .formselectHome{
     max-width: 250px;
     display: inline-block !important;  
+    border: solid black 1px !important;
+    border-radius: 13px !important;
+    
 }
+
+.boxEscolhaCriterio{
+
+    display: inline-block !important;
+    width:100%;  
+    
+
+}
+
+
+.boxEscolhaCriterio label{
+
+    padding-hight: 5px;
+}
+
+#id_quantidade{
+
+    border: solid black 1px;
+    border-radius: 13px;
+    width: 250px;
+    height: 37px;
+    font-weight: 400 !important ;
+
+
+}
+
+
+
+
+.EscolhaCriterio{
+
+display:flex;
+justify-content:center;
+align-items: baseline;
+margin-top: 19px;
+gap: 20px;
+
+}
+
+.EscolhaCriterio button{
+
+    background-color: #ff7f00;
+    border-radius: 25px;
+    padding: 5px;
+    width: 110px;
+
+
+}
+
+
+
+
+.EscolhaCriterio label{
+
+
+    margin-right:5px; 
+}
+
+
 
 
 .BoxbodyHomeCasasUsuario {
@@ -249,11 +377,27 @@
 
 .detalhes button{
 
-        background-color: #ffa665;
+        background-color: #ff7f00;
         border-radius: 10px;
         padding: 5px;
 
 }
+
+.detalhesCasa {
+
+    margin-top:35px;
+
+}
+
+.detalhesCasa button{
+
+    background-color: #ff7f00;
+    border-radius: 10px;
+    padding: 5px;
+
+}
+
+
 
 .detalhesExlcuircasa{
 
@@ -448,6 +592,10 @@ font-weight: 700;
     gap: 10px; {% endcomment %}
 }
 
+a{
+    text-decoration: none !important;
+}
+
 .boxNameUser {
     border: solid black 2px;
     border-radius: 28px;
@@ -457,7 +605,8 @@ font-weight: 700;
     padding-top: 9.5px;
     font-weight:500;
     font-size: 17px;
-    width: 130px;
+    min-width: 90px;
+    max-width: 190px;
     height: 40px;
 }
 
@@ -552,6 +701,23 @@ bodyC{
 
 }
 
+
+.formLogin{
+
+    display:flex;
+    margin-top: 15px;
+    
+
+}
+
+.formLogin img{
+
+    margin-left:59px;
+    
+
+}
+
+
 .inputs{
     display:flex;
     flex-direction: column;
@@ -565,6 +731,31 @@ bodyC{
     
     
 }
+
+.boxinputsAtualizarCasa{
+
+    margin-left: 75px;
+    margin-top: 15px;
+}
+
+
+.inputsAtualizarCasa{
+    display:flex;
+    flex-direction: column;
+    width: 200px;
+    margin-top: 10px; 
+    margin-bottom:px;
+    align-items:center;
+    border: solid #76BDFF 4px;
+    border-radius: 5px;
+    height: 30px;
+    padding-left:5px;
+    
+    
+}
+
+
+
 
 .inputsC{
     display:flex;

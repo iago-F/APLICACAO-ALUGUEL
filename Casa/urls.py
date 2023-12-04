@@ -9,4 +9,6 @@ urlpatterns = [
     path('casas_do_usuario/', views.casas_do_usuario, name='casas_do_usuario'),
     path('excluir_casa/<int:casa_id>/', views.excluir_casa, name='excluir_casa'),
     path('listar_casas/', views.listar_casas, name='listar_casas'),
+    path('excluir_reserva_casa/<int:reserva_id>/', views.excluir_reserva_casa, name='excluir_reserva_casa'),
+    path('atualizar_casa/<int:casa_id>/', views.atualizar_casa, name='atualizar_casa'),
 ]

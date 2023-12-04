@@ -71,9 +71,9 @@
       </div>
     </div>
 
-    <div class="BoxbodyHome">
+    <div class="BoxbodyHomeReserva">
       {% for reserva in reservas %}
-        <div class="bodyHome">
+        <div class="bodyHomeReserva">
           {% if reserva.casa.imagem %}
             <img src="{{ reserva.casa.imagem.url }}" alt="Imagem da Casa" class="imagemCasaUser" />
           {% endif %}
@@ -82,6 +82,12 @@
           <p>{{ reserva.casa.num_banheiro }} Banheiros</p>
           <p>{{ reserva.casa.descricao }}</p>
           <p>Preço Total: {{ reserva.casa.preco_total }}</p>
+          <form action="{% url 'excluir_reserva_casa' reserva.id %}" method="post">
+            {% csrf_token %}
+            <div class="detalhesExlcuircasa">
+              <button type="submit">Excluir Reserva</button>
+            </div>
+          </form>
         </div>
       {% endfor %}
     </div>

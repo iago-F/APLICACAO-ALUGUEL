@@ -70,29 +70,24 @@
         </div>
       </div>
     </div>
+    <div class="BoxbodyHomeDetalhesCasa">
+      <div class="bodyHomeReserva">
+        <img src="{{ casa.imagem.url }}" alt="Imagem da Casa" class="imagemCasaUser" />
 
-    <div class="BoxbodyHomeCasasUsuario">
-      {% for casa in casas_do_usuario %}
-        <div class="bodyMinhasCasas">
-          {% if casa.imagem %}
-            <img src="{{ casa.imagem.url }}" alt="Imagem da Casa" class="imagemCasaUser" />
-          {% endif %}
-          <p>{{ casa.endereco }}</p>
-          <p>{{ casa.num_quarto }} Quartos</p>
-          <p>{{ casa.num_banheiro }} Banheiros</p>
-          <p>{{ casa.descricao }}</p>
-          <p>Preço Total: {{ casa.preco_total }}</p>
-          <div class="buttonsCasaUser">
-            <form action="{% url 'excluir_casa' casa.id %}" method="post">
-              {% csrf_token %}
-              <div class="detalhesExlcuircasa">
-                <button type="submit">Excluir Casa</button>
-              </div>
-            </form>
-            <a class="detalhesCasa" href="{% url 'atualizar_casa' casa.id %}"><button>Atualizar Dados</button></a>
+        <form action="{% url 'atualizar_casa' casa.id %}" method="post">
+          <div class="boxinputsAtualizarCasa">
+            <input type="text" id="endereco" class="inputsAtualizarCasa" name="endereco" value="{{ casa.endereco }}" />
+            <input type="text" id="num_quarto" class="inputsAtualizarCasa" name="num_quarto" value="{{ casa.num_quarto }}" />
+            <input type="text" id="num_banheiro" class="inputsAtualizarCasa" name="num_banheiro" value="{{ casa.num_banheiro }}" />
+            <input type="text" id="descricao" class="inputsAtualizarCasa" name="descricao" value="{{ casa.descricao }}" />
+            <input type="number" id="preco_total" class="inputsAtualizarCasa" name="preco_total" value="{{ casa.preco_total }}" />
           </div>
-        </div>
-      {% endfor %}
+          {% csrf_token %}
+          <div class="detalhesCasa">
+            <button type="submit" class="">Atualizar</button>
+          </div>
+        </form>
+      </div>
     </div>
   </body>
 </html>
