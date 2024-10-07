@@ -1,0 +1,113 @@
+:root{
+     
+    --main-color: #ac4147;
+    --dark-color: #411f2d;
+    --light-color: #ffc27f;
+    --contrast-color: #f88863;
+    --differential-color: #ffe29a;
+
+}
+
+.sair_icon{
+
+}
+
+
+.icon-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon-text svg {
+  margin-bottom: 5px; /* Espaço entre o ícone e o texto */
+}
+
+.nav-text {
+  display: block;
+  font-size: 14px; /* Ajuste o tamanho do texto conforme necessário */
+}
+
+
+
+
+
+.sidebar {
+        position: fixed;
+        width: 85px;
+        height: 100%;
+        background-color: #eceff8;
+        padding-top: 20px;
+        left: 0;
+        top: 0;
+
+      }
+
+      .sidebar a {
+        padding: 15px 10px;
+        text-decoration: none;
+        font-size: 13px;
+        color: black;
+        display: block;
+        transition: background-color 0.3s ease; /* Transição suave de 0.3 segundos */
+      }
+
+      .sidebar a:hover {
+        background-color: #add8e6;
+      }
+
+      .content {
+        margin-left: 260px; /* Espaço para a sidebar */
+        padding: 20px;
+      }
+
+      .BoxbodyHome {
+        display: flex;
+        flex-wrap: wrap;
+
+      }
+
+      .bodyHome {
+        width: 48%; /* Ajuste conforme necessário */
+        margin-bottom: 20px;
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.card-dashboardP  {
+
+    
+    width: 550px;
+    height: 550px;
+    margin-top: 40px; 
+    text-align: center;
+    padding: 20px;
+    cursor: pointer;
+    display:flex;
+    
+
+}
+
+.inputsP{
+    display:flex;
+    flex-direction: column;
+    width: 350px;
+    align-items:center;
+    border: solid #76BDFF 4px;
+    height: 55px;
+    padding-left:5px;
+   
+}

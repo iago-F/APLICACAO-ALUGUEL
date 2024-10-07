@@ -11,4 +11,5 @@ urlpatterns = [
     path('listar_casas/', views.listar_casas, name='listar_casas'),
     path('excluir_reserva_casa/<int:reserva_id>/', views.excluir_reserva_casa, name='excluir_reserva_casa'),
     path('atualizar_casa/<int:casa_id>/', views.atualizar_casa, name='atualizar_casa'),
+    path('pagamento/<int:reserva_id>/', views.redirecionar_pagamento, name='redirecionar_pagamento'),
 ]

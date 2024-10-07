@@ -72,24 +72,28 @@
     </div>
 
     <div class="BoxbodyHomeReserva">
-      {% for reserva in reservas %}
-        <div class="bodyHomeReserva">
-          {% if reserva.casa.imagem %}
-            <img src="{{ reserva.casa.imagem.url }}" alt="Imagem da Casa" class="imagemCasaUser" />
-          {% endif %}
-          <p>{{ reserva.casa.endereco }}</p>
-          <p>{{ reserva.casa.num_quarto }} Quartos</p>
-          <p>{{ reserva.casa.num_banheiro }} Banheiros</p>
-          <p>{{ reserva.casa.descricao }}</p>
-          <p>Preço Total: {{ reserva.casa.preco_total }}</p>
-          <form action="{% url 'excluir_reserva_casa' reserva.id %}" method="post">
-            {% csrf_token %}
-            <div class="detalhesExlcuircasa">
-              <button type="submit">Excluir Reserva</button>
-            </div>
-          </form>
+  {% for reserva in reservas %}
+    <div class="bodyHomeReserva">
+      {% if reserva.casa.imagem %}
+        <img src="{{ reserva.casa.imagem.url }}" alt="Imagem da Casa" class="imagemCasaUser" />
+      {% endif %}
+      <p>{{ reserva.casa.endereco }}</p>
+      <p>{{ reserva.casa.num_quarto }} Quartos</p>
+      <p>{{ reserva.casa.num_banheiro }} Banheiros</p>
+      <p>{{ reserva.casa.descricao }}</p>
+      <p>Preço Total: {{ reserva.casa.preco_total }}</p>
+      <form action="{% url 'excluir_reserva_casa' reserva.id %}" method="post">
+        {% csrf_token %}
+        <div class="detalhesExlcuircasa">
+          <button type="submit">Excluir Reserva</button>
         </div>
-      {% endfor %}
+      </form>
+      <div class="detalhesExlcuircasa">
+        <a href="{% url 'redirecionar_pagamento' reserva.id %}" class="btn btn-primary">Fazer Pagamento</a>
+      </div>
     </div>
+  {% endfor %}
+</div>
+
   </body>
 </html>

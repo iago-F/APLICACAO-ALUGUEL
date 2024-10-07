@@ -1,0 +1,902 @@
+.card-dashboard   {
+
+    {% comment %} background-color: #FF6B00; {% endcomment %}
+    width: 550px;
+    height: 550px;
+    margin-top: 40px; 
+    text-align: center;
+    padding: 20px;
+    cursor: pointer;
+    display:flex;
+    {% comment %} align-intems:center; {% endcomment %}
+
+}
+
+.nav-item::marker {
+    display: none;
+}
+.card-dashboardC  {
+
+    {% comment %} background-color: #FF6B00; {% endcomment %}
+    width: 550px;
+    height: 550px;
+    margin-top: 40px; 
+    text-align: center;
+    padding: 20px;
+    cursor: pointer;
+    display:flex;
+    {% comment %} align-intems:center; {% endcomment %}
+
+}
+
+.card-dashboardP  {
+
+    
+    width: 550px;
+    height: 550px;
+    margin-top: 40px; 
+    text-align: center;
+    padding: 20px;
+    cursor: pointer;
+    display:flex;
+    
+
+}
+
+.inputsP{
+    display:flex;
+    flex-direction: column;
+    width: 350px;
+    align-items:center;
+    border: solid #76BDFF 4px;
+    height: 55px;
+    padding-left:5px;
+   
+}
+
+.boxL{
+    
+    margin-left: 550px;
+
+
+
+
+
+}
+
+.navPrincipal {
+    display: grid;
+    grid-template-columns: 100px 100px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 75px;
+    margin-top:px;
+    background-color: #eceff8;
+    border-bottom: solid black 1px;
+    border-top: solid black 1px;
+    margin-left:50px;
+}
+
+.boxUsers {
+    display: flex;
+    justify-content: row;
+    margin-top: 15px;
+    gap: 5px;
+}
+
+.boxUsers p {
+    color: black ;
+    text-decoration: none;
+}
+
+
+.boxUsers svg {
+
+color: black;
+
+
+
+}
+
+
+
+.box-usuario {
+        position: relative;
+        display: inline-block;
+        list-style: none;
+        
+      }
+
+      
+.box-usuario:focus {
+    outline: none;
+  }
+
+.botao-usuario:focus {
+        outline: none;
+      }
+
+.container{
+
+    margin-top: 55px;
+    margin-left: 35px;
+    background-color: #a1b1dd;
+    border: solid black 1px;
+    border-radius: 10px;
+    height:550px;
+}
+
+.InfosUser{
+    
+    font-size: 35px;
+}
+
+.InfoUsertext{
+
+    margin-bottom: 0px;
+    font-weight:500;
+
+}
+
+.boxCamposUsers{
+
+    margin-top: 20px;
+    
+    width: 900px;
+
+
+}
+
+.bodyHome{
+
+    background-color:#eceff8 ;
+
+
+
+}
+.boxinputsUser{
+
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    margin-bottom:15px;
+    grid-column-gap: 75px;
+    grid-row-gap: 18px;
+
+}
+
+.FormCadastroUser{
+
+    display:flex;
+    justify-content: center;
+
+
+
+}
+
+.buttonsCasaUser{
+
+    display:flex;
+    justify-content:center;
+    gap: 8px;
+}
+
+
+
+.boxInputsCadastro img{
+
+    margin-left: 60px;
+
+
+}
+
+
+.BoxbodyHome {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-x: auto;
+    margin-top: 90px;
+    display: grid;
+    grid-template-columns: repeat(3, 400px);
+    grid-template-rows: repeat(32, 530px);
+    margin-left:50px;
+    justify-content: center;
+    padding: 15px;
+}
+
+
+.BoxbodyHomeReserva {
+    display: flex;
+    overflow-x: auto;
+    margin-top: 30px;
+    justify-content:center;
+    display: grid;
+    grid-template-columns: repeat(3, 400px);
+    grid-template-rows: repeat(32, 600px);
+    margin-left:90px;
+}
+
+
+.detalhesCasa {
+    text-align: left; /* Alinha os textos à esquerda */
+
+    display:flex;
+    justify-content:center;
+    margin-top:35;
+    height:37px; /* Garante que a div ocupe toda a largura do card */
+}
+
+.detalhesCasa p {
+    margin: 5px 0; /* Ajusta o espaçamento dos textos */
+}
+
+
+
+.bodyHome {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    background-color: #eceff8;
+    border-radius: 8px;
+    max-width:350px;
+    max-height:500px;
+    border: solid black 1px;
+    margin: 25px;
+
+}
+
+.bodyHome img {
+
+    display: flex;
+    justify-content: center;
+    margin-left:15%;
+
+}
+
+
+.bodyHomeReserva {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    max-width:550px;
+    max-height:590px;
+    border: solid black 1px;
+}
+
+
+.BoxbodyHomeDetalhesCasa {
+    display: flex;
+    overflow-x: auto;
+    margin-top: 20px;
+    justify-content:center;
+    display: grid;
+    grid-template-columns: repeat(1, 600px);
+    grid-template-rows: repeat(1, 700px);
+}
+
+
+
+.bodyHomeDetalhesCasa{
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    max-width: 500px;
+    max-height: 680px;
+    border: solid black 1px;
+}
+
+
+
+.formselectHome{
+    max-width: 250px;
+    display: inline-block !important;  
+    border: solid black 1px !important;
+    border-radius: 13px !important;
+    
+}
+
+.boxEscolhaCriterio{
+
+    display: inline-block !important;
+    width:100%;  
+    
+
+}
+
+
+.boxEscolhaCriterio label{
+
+    padding-hight: 5px;
+}
+
+#id_quantidade{
+
+    border: solid black 1px;
+    border-radius: 13px;
+    width: 250px;
+    height: 37px;
+    font-weight: 400 !important ;
+
+
+}
+
+
+
+
+.EscolhaCriterio{
+
+display:flex;
+justify-content:center;
+align-items: baseline;
+margin-top: 19px;
+gap: 20px;
+
+}
+
+.EscolhaCriterio button{
+
+    background-color: #ff7f00;
+    border-radius: 25px;
+    padding: 5px;
+    width: 110px;
+
+
+}
+
+
+
+
+.EscolhaCriterio label{
+
+
+    margin-right:5px; 
+}
+
+
+
+
+.BoxbodyHomeCasasUsuario {
+    display: flex;
+    overflow-x: auto;
+    margin-top: 20px;
+    justify-content:center;
+    display: grid;
+    grid-template-columns: repeat(3, 450px);
+   /* grid-template-rows: repeat(32, 730px); */
+  /*  display: flex;
+    justify-content: center; */
+    gap: 25px;
+}
+
+
+
+
+
+
+
+
+.bodyMinhasCasas {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    max-width:500px;
+    max-height:600px;
+    border: solid black 1px;
+    height:600px;
+    width:100%;
+}
+.bodyHome a{
+
+ display:flex;
+ justify-content:center;
+
+
+
+
+}
+
+.detalhes{
+
+    margin-top:35px;
+
+
+
+}
+
+.detalhes button{
+
+        background-color: #ff7f00;
+        border-radius: 10px;
+        padding: 5px;
+
+}
+
+.detalhesCasaHome{
+
+    text-align: left;
+    width: 100%;
+
+}
+
+
+
+
+
+.detalhesCasa button{
+
+    background-color: #90ee90;
+    border-radius: 10px;
+    padding: 5px;
+
+}
+
+.detalhesExlcuircasa button{
+
+        background-color: #fa4747;
+        border-radius: 10px;
+        padding: 5px;
+
+}
+
+#dropdownMenu{
+
+background-color:#ffa665;
+margin-top:10px;
+font-weight: 700;
+
+   
+}
+
+.dropUser {
+    
+    overflow: hidden;
+    transition: 2s; /* Adiciona uma transição de 0.3 segundos com uma curva de aceleração ease */
+}
+
+#dropdownMenu a{
+    font-weight: 600;
+}
+
+.imagemCasaUser {
+    width: 57%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+
+.imagemCasaUserHome{
+    width: ;
+    height: ;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.imagemCasaUserDetalhes{
+    width: 430px;
+    height:300px;
+    max-height:300px;
+    max-width: 490px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.bodyHome p {
+    margin: 10px;
+}
+
+
+
+
+
+.TitulocasaCadCasa{
+
+    display:flex;
+    margin-left:350px;
+    width: 350px;
+    font-size: 30px;
+    font-weight:500;
+    
+
+
+}
+.boxinputsCadCasa{
+
+    whidth:550px;
+    max-width: 550px;
+    display:flex;
+    flex-wrap: column;
+    display:block;
+
+}
+
+.buttons{
+    display:flex;
+    justify-content:row;
+    gap:35px;
+    margin-top: 24px;
+}
+
+
+
+.buttonsUersDelet {
+    float: inline-start;
+    background-color: #e35b4f;
+    border: solid 1px black;
+    border-radius: 14px;
+    height: 35px;
+    width: 150px;
+}
+
+.form-container{
+
+    
+    display: flex;
+    justify-content: space-between; /* Ajuste conforme necessário para a separação desejada entre os botões */
+    align-items: center; 
+
+}
+
+.buttonsUersUpdate{
+    background-color:#90ee90;
+    border: solid 1px black;
+    border-radius: 14px;
+    height: 35px;
+    width: 150px; 
+    
+}
+
+
+
+.inputsUser{
+    max-width: 450px;
+    width:250px;
+    border: solid 1px black;
+    border-radius: 14px;
+    padding-left:5px;
+    height: 55px;
+
+}
+
+.boxinputsCasa{
+    
+    width: 90px;
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    grid-column-gap: 100px;
+    grid-row-gap: 1em;
+    margin-left: 90px;
+    margin-top:50px;
+    
+}
+.formCadCasa{
+    
+
+}
+.inputsCadCasaimg{
+    width:848px;
+    height: 200px;
+    background: none;
+    border: solid 1px black;
+    border-radius: 10px;
+    
+}
+
+.buttonCadcasa{
+
+    background-color:#90ee90;
+    border: solid 1px black;
+    border-radius: 14px;
+    height: 35px;
+    width: 150px; 
+    margin-left: 450px;
+    margin-top: 10px;
+}
+
+.inputsCadCasa{
+    
+   
+    width:250px;
+    border: solid 1px black;
+    border-radius: 10px;
+    height: 55px;
+
+}
+
+.InfoUsertextEmail{
+
+    font-size: 20px;
+    
+}
+
+.IconeLogin{
+
+    margin-top: 3px;
+    margin-left: px
+    
+   
+
+}
+
+.boxbutton{
+    {% comment %} display: flex;
+    gap: 10px; {% endcomment %}
+}
+
+a{
+    text-decoration: none !important;
+}
+
+.boxNameUser {
+    border: solid black 2px;
+    border-radius: 28px;
+    margin-right: 133px;
+    margin-top: 3px;
+    margin-bottom: 8px;
+    padding-top: 9.5px;
+    font-weight:500;
+    font-size: 17px;
+    min-width: 90px;
+    max-width: 190px;
+    height: 40px;
+}
+
+.NameUser {
+    margin-right: 22px;
+    margin-top: 10px;
+    padding-left: 8px;
+}
+
+
+
+
+.botao-usuario{
+    border:none;
+    background:none;
+    
+
+}
+
+.a nav-link{
+
+    whidth: 50px;
+}
+
+.LogoPrincipal {
+    display: flex;
+    justify-content: center;
+    margin-left: 50px;
+    margin-top: 9px;
+    width: 80px;
+    height: 60px;
+}
+  
+  .box-usuario {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 8px;
+    z-index: 1;
+  }
+  
+  .box-usuario.active .dropdown-menu {
+    display: block;
+  }
+  .box-usuario ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+  
+  .dropdown-item {
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+    color: #333;
+  } 
+
+.bodyPlataforma{
+
+    display:flex;
+    flex-direction: column;
+    background-color: #eceff8;;
+
+
+}
+
+.bodyHomePage{
+    background-color: White;
+}
+
+
+bodyC{
+    display:flex;
+    justify-content:center;
+    
+}
+.form{
+
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+
+}
+
+
+.formLogin{
+
+    display:flex;
+    margin-top: 15px;
+    
+
+}
+
+.formLogin img{
+
+    margin-left:59px;
+    
+
+}
+
+
+.inputs{
+    display:flex;
+    flex-direction: column;
+    width: 350px;
+    margin-top: 15px; 
+    margin-bottom:30px;
+    align-items:center;
+    border: solid #76BDFF 4px;
+    height: 55px;
+    padding-left:5px;
+    
+    
+}
+
+.boxinputsAtualizarCasa{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Duas colunas */
+    gap: 10px; /* Espaçamento entre os inputs */
+    max-width: 800px; /* Limite de largura da área dos inputs */
+    margin: 0 auto;
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+
+.inputsAtualizarCasa {
+    width: 100%;
+    padding: 10px;
+    padding-left:90px;  /* Espaço para o texto estático do label */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    position: relative;
+}
+
+
+.input-label {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; /* Permite que o usuário clique no input diretamente */
+    color: #777;
+    font-size: 14px;
+
+}
+
+
+
+
+.inputsC{
+    display:flex;
+    flex-direction: column;
+    width: 350px;
+    align-items:center;
+    border: solid #76BDFF 4px;
+    height: 55px;
+    padding-left:5px;
+   
+}
+
+
+
+.button{
+    display:flex;
+    justify-content:center;
+    margin-top: 25px; 
+    width:  350px;
+    height: 35px;
+    border: solid black 1px;
+    border-radius: 15px;
+    background-color: #FF6B00;
+    font-weight: 700;
+    font-size: 15px;
+    color: black;
+    align-items:center;
+    text-decoration: none;
+
+}
+
+a{
+    text-decoration: none;
+}
+
+.buttonC{
+    display:flex;
+    justify-content:center;
+    margin-top: 40px; 
+    width:  350px;
+    height: 45px;
+    border: solid black 1px;
+    border-radius: 15px;
+    background-color: #FF6B00;
+    font-weight: 700;
+    font-size: 15px;
+    color: black;
+    align-items:center;
+    
+
+}
+
+input::placeholder{
+
+    color: black;
+    font-weight: 500;
+    
+}
+
+
+.text-card{
+
+    font-size: 25px;
+
+}
+
+.btn-add-carros{
+
+    background-color: var(--contrast-color);
+    padding: 5px;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+.btn-principal{
+    color:white;
+    border: none;
+    background-color: var(--dark-color);
+    padding: 5px;
+    font-size: 30px;
+}
+
+#att_cliente{
+
+    display: none;
+}
+
+#form-att-cliente{
+    display: none;
+
+}

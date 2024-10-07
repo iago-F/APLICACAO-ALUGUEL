@@ -72,9 +72,10 @@
     width: 100%;
     height: 75px;
     margin-top:px;
-    background-color: white;
+    background-color: #eceff8;
     border-bottom: solid black 1px;
     border-top: solid black 1px;
+    margin-left:50px;
 }
 
 .boxUsers {
@@ -192,49 +193,114 @@ color: black;
 
 .BoxbodyHome {
     display: flex;
+    flex-wrap: wrap;
     overflow-x: auto;
-    margin-top: 120px;
-    justify-content:center;
+    margin-top: 90px;
     display: grid;
     grid-template-columns: repeat(3, 400px);
     grid-template-rows: repeat(32, 530px);
+    margin-left:50px;
+    justify-content: center;
+    padding: 15px;
 }
 
 
 .BoxbodyHomeReserva {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Espaçamento entre os cards */
+}
+
+.bodyHomeReserva {
+  flex: 1 1 calc(33.33% - 20px); /* Cada card ocupa 33.33% da largura, menos o espaçamento */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  margin-top:20px;
+  margin-left:80px;
+  background-color: #fff;
+  border-radius: 8px;
+  max-width:550px;
+  border: solid black 1px;
+}
+
+@media (max-width: 768px) {
+  .bodyHomeReserva {
+    flex: 1 1 calc(50% - 20px); /* Para telas menores, cada card ocupa 50% da largura */
+  }
+}
+
+
+
+
+
+
+
+.BoxbodyHomePagamento {
     display: flex;
     overflow-x: auto;
-    margin-top: 30px;
+    margin-top: 85px;
+    height: 800px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.detalhesCasa {
+    text-align: left; /* Alinha os textos à esquerda */
+
+    display:flex;
     justify-content:center;
-    display: grid;
-    grid-template-columns: repeat(3, 400px);
-    grid-template-rows: repeat(32, 600px);
+    margin-top:35;
+    height:37px; /* Garante que a div ocupe toda a largura do card */
+}
+
+.detalhesCasa p {
+    margin: 5px 0; /* Ajusta o espaçamento dos textos */
 }
 
 
 
 .bodyHome {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
     padding: 10px;
-    background-color: #fff;
+    background-color: #eceff8;
     border-radius: 8px;
     max-width:350px;
     max-height:500px;
     border: solid black 1px;
+    margin: 25px;
+    width: 48%; /* Ajuste conforme necessário */
+    margin-bottom: 20px
+
+}
+
+.bodyHome img {
+
+    display: flex;
+    justify-content: center;
+    margin-left:15%;
+
 }
 
 
-.bodyHomeReserva {
+
+
+.bodyHomePagamento {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
     padding: 10px;
     background-color: #fff;
     border-radius: 8px;
-    max-width:350px;
-    max-height:590px;
+    max-width: 550px;
+    /* max-height: 590px; */
     border: solid black 1px;
 }
+
+
 
 
 .BoxbodyHomeDetalhesCasa {
@@ -336,8 +402,11 @@ gap: 20px;
     margin-top: 20px;
     justify-content:center;
     display: grid;
-    grid-template-columns: repeat(3, 400px);
-    grid-template-rows: repeat(32, 730px);
+    grid-template-columns: repeat(3, 450px);
+   /* grid-template-rows: repeat(32, 730px); */
+  /*  display: flex;
+    justify-content: center; */
+    gap: 25px;
 }
 
 
@@ -353,24 +422,26 @@ gap: 20px;
     padding: 10px;
     background-color: #fff;
     border-radius: 8px;
-    max-width:350px;
+    max-width:500px;
     max-height:600px;
     border: solid black 1px;
+    height:600px;
+    width:100%;
 }
 .bodyHome a{
 
  display:flex;
  justify-content:center;
- 
-    
- 
+
+
+
 
 }
 
 .detalhes{
 
     margin-top:35px;
-    
+
 
 
 }
@@ -383,25 +454,22 @@ gap: 20px;
 
 }
 
-.detalhesCasa {
+.detalhesCasaHome{
 
-    margin-top:35px;
+    text-align: left;
+    width: 100%;
 
 }
+
+
+
+
 
 .detalhesCasa button{
 
-    background-color: #ff7f00;
+    background-color: #90ee90;
     border-radius: 10px;
     padding: 5px;
-
-}
-
-
-
-.detalhesExlcuircasa{
-
-    margin-top:35px;
 
 }
 
@@ -432,13 +500,31 @@ font-weight: 700;
     font-weight: 600;
 }
 
-.imagemCasaUser{
-    width: 330px;
-    height:300px;
-    max-height:300px;
-    max-width: 330px;
+.imagemCasaUser {
+    width: 57%;
+    height: 50%;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+
+.imagemCasaUserPagamento {
+    /* width: 57%; */
+    max-width: 500px;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+
+.imagemCasaUserHome{
+    width: ;
+    height: ;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
 }
 
 .imagemCasaUserDetalhes{
@@ -678,12 +764,12 @@ a{
     display:flex;
     flex-direction: column;
     background-color: #eceff8;;
-    
+
 
 }
 
 .bodyHomePage{
-    background-color: #eceff8;
+    background-color: White;
 }
 
 
@@ -733,25 +819,39 @@ bodyC{
 }
 
 .boxinputsAtualizarCasa{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Duas colunas */
+    gap: 10px; /* Espaçamento entre os inputs */
+    max-width: 800px; /* Limite de largura da área dos inputs */
+    margin: 0 auto;
+}
 
-    margin-left: 75px;
-    margin-top: 15px;
+.input-container {
+    position: relative;
+    margin-bottom: 20px;
 }
 
 
-.inputsAtualizarCasa{
-    display:flex;
-    flex-direction: column;
-    width: 200px;
-    margin-top: 10px; 
-    margin-bottom:px;
-    align-items:center;
-    border: solid #76BDFF 4px;
-    border-radius: 5px;
-    height: 30px;
-    padding-left:5px;
-    
-    
+.inputsAtualizarCasa {
+    width: 100%;
+    padding: 10px;
+    padding-left:90px;  /* Espaço para o texto estático do label */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    position: relative;
+}
+
+
+.input-label {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; /* Permite que o usuário clique no input diretamente */
+    color: #777;
+    font-size: 14px;
+
 }
 
 
