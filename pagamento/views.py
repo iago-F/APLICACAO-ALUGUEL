@@ -17,13 +17,13 @@ def realizar_pagamento(request, reserva_id):
 
 
 
-    # Inicializa a variável para mensagens de exceção
+
     pagamento_excecao = None
 
     # Se o método for POST, processa o pagamento
     if request.method == 'POST':
         numero_cartao = request.POST.get('numero_cartao')  # Captura o número do cartão
-        valor = float(request.POST.get('valor', minha_reserva.casa.preco_total))  # Captura o valor do pagamento
+        valor = float(request.POST.get('valor', minha_reserva.casa.preco_total))
 
         # Calcula a soma de todos os pagamentos feitos para essa reserva
         total_pagamentos_ja_feitos = Pagamento.objects.filter(reserva=minha_reserva).aggregate(Sum('valor'))[
@@ -55,5 +55,5 @@ def realizar_pagamento(request, reserva_id):
         return render(request, 'fazer_pagamentos.html', {'reserva': minha_reserva,
                       'pagamento_sucesso': pagamento_sucesso})
 
-    # Se o método for GET, renderiza o template do formulário de pagamento
+
     return render(request, 'fazer_pagamentos.html', {'reserva': minha_reserva})

@@ -112,10 +112,10 @@ def Casas_Reservadas(request):
 #Listar as casas do usuário
 @login_required
 def casas_do_usuario(request):
-    # Obtém todas as casas cadastradas pelo usuário logado
+
     casas_do_usuario = Casa.objects.filter(usuario=request.user)
 
-    # Adiciona as casas ao contexto
+
     context = {'casas_do_usuario': casas_do_usuario}
 
     return render(request, 'casas_do_usuario.html', context)
@@ -130,7 +130,6 @@ def excluir_casa(request, casa_id):
         casa.delete()
         return redirect('casas_do_usuario')
     else:
-        # Caso o usuário não tenha permissão, você pode exibir uma mensagem ou redirecionar para outra página
         return render(request, 'mensagem_sem_permissao.html')
 
 
@@ -143,8 +142,7 @@ def excluir_reserva_casa(request, reserva_id):
         reserva.delete()
         return redirect('casas_reservadas')
     else:
-        # Caso o usuário não tenha permissão, você pode exibir uma mensagem ou redirecionar para outra página
-        return render(request, 'HomePage.html')
+                return render(request, 'HomePage.html')
     
 
 #Funcção para Filtrar as casas

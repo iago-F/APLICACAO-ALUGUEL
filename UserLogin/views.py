@@ -22,7 +22,7 @@ def cadastroUser(request):
         telefone = request.POST.get('telefone')
         instagram = request.POST.get('instagram')
 
-        # Converte a string de data para um objeto datetime
+
         dt_nasc = datetime.strptime(dt_nasc_str, '%y-%m-%d').date() if dt_nasc_str else None
 
         # Verifica se o usuário já existe
@@ -129,7 +129,7 @@ def Login(request):
 
         if user:
             login(request, user)
-            return redirect('plataforma')  # Redirecione para a página desejada após o login bem-sucedido
+            return redirect('plataforma')
         else:
             messages.error(request, 'Usuário ou senha incorreto')
             return render(request, 'Login.html')
@@ -164,7 +164,7 @@ def plataforma (request):
                         'instagram': usuario.instagram,
                         'dt_nasc': usuario.dt_nasc,
                         }
-        #Tratamento de exceção para inserir um dicionario vazio caso o UserProfile nao exista
+
         except UserProfile.DoesNotExist:
                 perfil_info = {}  
         return render(request, 'plataforma.html', {'user_info': user_info, 'perfil_info': perfil_info})
@@ -175,7 +175,7 @@ def excluir_usuario_view(request):
      if request.method == 'POST':
         user = request.user
         user.delete()
-        logout(request)  # Encerrar a sessão após excluir o usuário
+        logout(request)
         return redirect('Login')
         #  return render(request, 'template_excluir_conta.html')
 
@@ -185,23 +185,23 @@ def atualizar_perfil(request):
     if request.method == 'POST':
         user = request.user
 
-        # Atualize os campos do usuário se estiverem presentes no formulário
+
         user.email = request.POST.get('email', user.email)
         user.first_name = request.POST.get('first_name', user.first_name)
         user.last_name = request.POST.get('last_name', user.last_name)
-        # Atualize outros campos do usuário conforme necessário
+
 
         user.save()
 
-        # Recupere o perfil do usuário associado
+
         perfilDoUsuario, created = UserProfile.objects.get_or_create(user=user)
 
-        # Atualize os campos do UserProfile se estiverem presentes no formulário
+
         perfilDoUsuario.cpf = request.POST.get('cpf', perfilDoUsuario.cpf)
         perfilDoUsuario.dt_nasc = request.POST.get('dt_nasc', perfilDoUsuario.dt_nasc)
         perfilDoUsuario.telefone = request.POST.get('telefone', perfilDoUsuario.telefone)
         perfilDoUsuario.instagram = request.POST.get('instagram', perfilDoUsuario.instagram)
-        # Atualize outros campos do UserProfile conforme necessário
+
 
         perfilDoUsuario.save()
 

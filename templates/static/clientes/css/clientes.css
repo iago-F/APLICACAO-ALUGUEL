@@ -3,7 +3,7 @@
     {% comment %} background-color: #FF6B00; {% endcomment %}
     width: 550px;
     height: 550px;
-    margin-top: 40px; 
+    margin-top: 40px;
     text-align: center;
     padding: 20px;
     cursor: pointer;
@@ -20,7 +20,7 @@
     {% comment %} background-color: #FF6B00; {% endcomment %}
     width: 550px;
     height: 550px;
-    margin-top: 40px; 
+    margin-top: 40px;
     text-align: center;
     padding: 20px;
     cursor: pointer;
@@ -31,15 +31,15 @@
 
 .card-dashboardP  {
 
-    
+
     width: 550px;
     height: 550px;
-    margin-top: 40px; 
+    margin-top: 40px;
     text-align: center;
     padding: 20px;
     cursor: pointer;
     display:flex;
-    
+
 
 }
 
@@ -51,11 +51,11 @@
     border: solid #76BDFF 4px;
     height: 55px;
     padding-left:5px;
-   
+
 }
 
 .boxL{
-    
+
     margin-left: 550px;
 
 
@@ -64,18 +64,25 @@
 
 }
 
+
+
+
 .navPrincipal {
     display: grid;
-    grid-template-columns: 100px 100px;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    height: 75px;
-    margin-top:px;
+    grid-template-columns: 3fr 0.5fr; /* Duas colunas: 1fr para os filtros, 0.5fr para o ícone de usuário */
+    align-items: center;
     background-color: #eceff8;
     border-bottom: solid black 1px;
     border-top: solid black 1px;
-    margin-left:50px;
+    height: 75px;
+    padding: 0 50px;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    WIDTH: 100%;
+    MARGIN-LEFT: 84PX;
 }
 
 .boxUsers {
@@ -105,10 +112,10 @@ color: black;
         position: relative;
         display: inline-block;
         list-style: none;
-        
+
       }
 
-      
+
 .box-usuario:focus {
     outline: none;
   }
@@ -128,7 +135,7 @@ color: black;
 }
 
 .InfosUser{
-    
+
     font-size: 35px;
 }
 
@@ -142,7 +149,7 @@ color: black;
 .boxCamposUsers{
 
     margin-top: 20px;
-    
+
     width: 900px;
 
 
@@ -209,6 +216,9 @@ color: black;
   display: flex;
   flex-wrap: wrap;
   gap: 20px; /* Espaçamento entre os cards */
+  margin-top: 100px;
+  justify-content: center;
+
 }
 
 .bodyHomeReserva {
@@ -330,17 +340,18 @@ color: black;
 
 .formselectHome{
     max-width: 250px;
-    display: inline-block !important;  
+    display: inline-block !important;
     border: solid black 1px !important;
     border-radius: 13px !important;
-    
+
 }
 
 .boxEscolhaCriterio{
 
-    display: inline-block !important;
-    width:100%;  
-    
+    display: flex;
+    justify-content: center;
+    flex-grow: 1; /* Faz o filtro ocupar o espaço central */
+
 
 }
 
@@ -366,11 +377,9 @@ color: black;
 
 .EscolhaCriterio{
 
-display:flex;
-justify-content:center;
-align-items: baseline;
-margin-top: 19px;
-gap: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 
 }
 
@@ -390,8 +399,44 @@ gap: 20px;
 .EscolhaCriterio label{
 
 
-    margin-right:5px; 
+    margin-right:5px;
 }
+
+.image-preview {
+    width: 300px; /* Largura fixa */
+    height: 200px; /* Altura fixa */
+     /* Borda ao redor do contêiner */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+ #imagePreview img {
+    max-width: 100%;
+    max-height: 100%;
+    display: none; /* Escondida até que uma imagem seja selecionada */
+  }
+
+
+
+
+.p-3{
+
+margin-top: 110px;
+
+}
+
+
+
+
+ .image-preview img {
+      width: 100%;
+      height: auto;
+      display: none; /* Esconde a imagem inicialmente */
+      }
+
+
 
 
 
@@ -399,7 +444,7 @@ gap: 20px;
 .BoxbodyHomeCasasUsuario {
     display: flex;
     overflow-x: auto;
-    margin-top: 20px;
+    margin-top: 100px;
     justify-content:center;
     display: grid;
     grid-template-columns: repeat(3, 450px);
@@ -487,11 +532,11 @@ background-color:#ffa665;
 margin-top:10px;
 font-weight: 700;
 
-   
+
 }
 
 .dropUser {
-    
+
     overflow: hidden;
     transition: 2s; /* Adiciona uma transição de 0.3 segundos com uma curva de aceleração ease */
 }
@@ -551,7 +596,7 @@ font-weight: 700;
     width: 350px;
     font-size: 30px;
     font-weight:500;
-    
+
 
 
 }
@@ -585,10 +630,10 @@ font-weight: 700;
 
 .form-container{
 
-    
+
     display: flex;
     justify-content: space-between; /* Ajuste conforme necessário para a separação desejada entre os botões */
-    align-items: center; 
+    align-items: center;
 
 }
 
@@ -597,8 +642,8 @@ font-weight: 700;
     border: solid 1px black;
     border-radius: 14px;
     height: 35px;
-    width: 150px; 
-    
+    width: 150px;
+
 }
 
 
@@ -614,7 +659,7 @@ font-weight: 700;
 }
 
 .boxinputsCasa{
-    
+
     width: 90px;
     display: grid;
     grid-template-columns: repeat(3, 200px);
@@ -622,10 +667,10 @@ font-weight: 700;
     grid-row-gap: 1em;
     margin-left: 90px;
     margin-top:50px;
-    
+
 }
 .formCadCasa{
-    
+
 
 }
 .inputsCadCasaimg{
@@ -634,7 +679,7 @@ font-weight: 700;
     background: none;
     border: solid 1px black;
     border-radius: 10px;
-    
+
 }
 
 .buttonCadcasa{
@@ -642,15 +687,21 @@ font-weight: 700;
     background-color:#90ee90;
     border: solid 1px black;
     border-radius: 14px;
-    height: 35px;
-    width: 150px; 
+    height: 50px;
+    width: 150px;
     margin-left: 450px;
-    margin-top: 10px;
+    margin-top: 26px;
 }
 
+
+
+
+
+
+
 .inputsCadCasa{
-    
-   
+
+
     width:250px;
     border: solid 1px black;
     border-radius: 10px;
@@ -661,15 +712,15 @@ font-weight: 700;
 .InfoUsertextEmail{
 
     font-size: 20px;
-    
+
 }
 
 .IconeLogin{
 
     margin-top: 3px;
     margin-left: px
-    
-   
+
+
 
 }
 
@@ -706,10 +757,11 @@ a{
 
 
 .botao-usuario{
-    border:none;
-    background:none;
-    
-
+   display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 .a nav-link{
@@ -720,17 +772,16 @@ a{
 .LogoPrincipal {
     display: flex;
     justify-content: center;
-    margin-left: 50px;
+
     margin-top: 9px;
     width: 80px;
     height: 60px;
 }
-  
+
   .box-usuario {
-    position: relative;
-    display: inline-block;
+ margin-left: auto;
   }
-  
+
   .dropdown-menu {
     display: none;
     position: absolute;
@@ -742,7 +793,7 @@ a{
     padding: 8px;
     z-index: 1;
   }
-  
+
   .box-usuario.active .dropdown-menu {
     display: block;
   }
@@ -751,13 +802,13 @@ a{
     margin: 0;
     padding: 0;
 }
-  
+
   .dropdown-item {
     display: block;
     padding: 8px;
     text-decoration: none;
     color: #333;
-  } 
+  }
 
 .bodyPlataforma{
 
@@ -776,7 +827,7 @@ a{
 bodyC{
     display:flex;
     justify-content:center;
-    
+
 }
 .form{
 
@@ -792,14 +843,14 @@ bodyC{
 
     display:flex;
     margin-top: 15px;
-    
+
 
 }
 
 .formLogin img{
 
     margin-left:59px;
-    
+
 
 }
 
@@ -808,14 +859,14 @@ bodyC{
     display:flex;
     flex-direction: column;
     width: 350px;
-    margin-top: 15px; 
+    margin-top: 15px;
     margin-bottom:30px;
     align-items:center;
     border: solid #76BDFF 4px;
     height: 55px;
     padding-left:5px;
-    
-    
+
+
 }
 
 .boxinputsAtualizarCasa{
@@ -865,7 +916,7 @@ bodyC{
     border: solid #76BDFF 4px;
     height: 55px;
     padding-left:5px;
-   
+
 }
 
 
@@ -873,7 +924,7 @@ bodyC{
 .button{
     display:flex;
     justify-content:center;
-    margin-top: 25px; 
+    margin-top: 25px;
     width:  350px;
     height: 35px;
     border: solid black 1px;
@@ -894,7 +945,7 @@ a{
 .buttonC{
     display:flex;
     justify-content:center;
-    margin-top: 40px; 
+    margin-top: 40px;
     width:  350px;
     height: 45px;
     border: solid black 1px;
@@ -904,7 +955,7 @@ a{
     font-size: 15px;
     color: black;
     align-items:center;
-    
+
 
 }
 
@@ -912,7 +963,7 @@ input::placeholder{
 
     color: black;
     font-weight: 500;
-    
+
 }
 
 
