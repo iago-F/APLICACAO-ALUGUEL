@@ -54,15 +54,8 @@
    
 }
 
-.boxL{
-    
-    margin-left: 550px;
 
 
-
-
-
-}
 
 .navPrincipal {
     display: grid;
@@ -743,7 +736,7 @@ bodyC{
 .formLogin{
 
     display:flex;
-    margin-top: 15px;
+    margin-top:150px;
     
 
 }

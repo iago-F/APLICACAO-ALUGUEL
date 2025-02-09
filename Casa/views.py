@@ -9,12 +9,13 @@ from django.contrib import messages
 from .forms import CasaForm , FiltroCasaForm
 import datetime
 from datetime import datetime
+from UserLogin.urls import urlpatterns
 from django.db import transaction
 
 
 
 
-@login_required
+@login_required(login_url='Login')
 def cadastrarCasa(request):
     if request.method == 'POST':
         form = CasaForm(request.POST, request.FILES)
@@ -33,7 +34,7 @@ def cadastrarCasa(request):
 
 
 
-@login_required
+@login_required(login_url='Login')
 def fazer_reserva(request, casa_id):
     casa = get_object_or_404(Casa, id=casa_id)
 
@@ -98,7 +99,7 @@ def fazer_reserva(request, casa_id):
 
 
 # FUNÇÃO PARA VER AS CASAS RESERVADAS
-@login_required
+@login_required(login_url='Login')
 def Casas_Reservadas(request):
     # Obtém todas as reservas do usuário atual
     reservas_do_usuario = Reserva.objects.filter(usuario=request.user)
@@ -110,7 +111,7 @@ def Casas_Reservadas(request):
 
 
 #Listar as casas do usuário
-@login_required
+@login_required(login_url='Login')
 def casas_do_usuario(request):
 
     casas_do_usuario = Casa.objects.filter(usuario=request.user)
@@ -174,7 +175,7 @@ def listar_casas(request):
 
 
 #Atualizar Casas Cadastradas
-@login_required 
+@login_required(login_url='Login')
 def atualizar_casa(request, casa_id):
     casa = get_object_or_404(Casa, pk=casa_id)
 

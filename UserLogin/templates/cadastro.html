@@ -1,44 +1,204 @@
 {% load static %}
 
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'clientes/css/clientes.css' %}" />
-    <link rel="stylesheet" href="{% static 'general/css/base.css' %}" />
-    <link rel="stylesheet" href="{% static 'general/css/general.css' %}" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
-    <style></style>
+    <title>Cadastro</title>
+
+    <!-- Seu CSS principal -->
+     <!-- <link rel="stylesheet" href="{% static 'clientes/css/clientes.css' %}" /> -->
+    <!-- <link rel="stylesheet" href="{% static 'general/css/base.css' %}" />  -->
+    <!-- <link rel="stylesheet" href="{% static 'general/css/general.css' %}" /> -->
+
+    <!-- Bootstrap CSS -->
+
+  <!-- ... -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'clientes/css/clientes.css' %}">
+
+
+    <style>
+      body.bodyPlataforma {
+        background-color: #f2f2f2; /* Fundo levemente cinza */
+      }
+
+      /* NAVBAR SUPERIOR */
+      .navPrincipal {
+        background-color: #eceff8;
+        border-bottom: 1px solid #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 60px;
+        padding: 0 20px;
+      }
+      .navPrincipal .LogoPrincipal {
+        width: 60px;
+        height: auto;
+      }
+
+      .boxNameUser {
+        border: solid black 2px;
+        border-radius: 28px;
+        font-weight: 500;
+        font-size: 15px;
+        min-width: 90px;
+        max-width: 190px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 8px;
+      }
+
+      /* Container que centraliza o formulário */
+      .boxC {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 40px 0;
+      }
+
+      /* Card do formulário */
+      .boxInputsCadastro {
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 2rem;
+        width: 600px;
+        margin-top: 50px;
+      }
+
+      /* Logo maior */
+      .boxInputsCadastro img {
+        width: 120px;
+        display: block;
+        margin: 0 auto 20px auto;
+      }
+
+      /* Deixando inputs maiores */
+      .form-control {
+        border-radius: 0.375rem;
+        margin-bottom: 15px;
+        height: 50px;      /* Mais altura */
+        font-size: 16px;   /* Fonte maior */
+      }
+
+      /* Botão */
+      .buttonC {
+        background-color: #ff7f00;
+        border: none;
+        border-radius: 0.375rem;
+        padding: 0.75rem;
+        font-weight: 700;
+        font-size: 1rem;
+        color: #fff;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 10px;
+      }
+      .buttonC:hover {
+        background-color: #e36f00;
+      }
+
+      /* Alertas */
+      #criar-usuario .alert {
+        width: 90%;
+        max-width: 600px;
+        margin: 20px auto;
+      }
+
+      /* Dropdown fix */
+      .box-usuario {
+        position: relative;
+        display: inline-block;
+      }
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        border-radius: 4px;
+        padding: 8px;
+        z-index: 10;
+        right: 0;
+      }
+      .box-usuario.active .dropdown-menu {
+        display: block;
+      }
+      .dropdown-item {
+        color: #333;
+        text-decoration: none;
+        display: block;
+        padding: 8px 12px;
+      }
+      .dropdown-item:hover {
+        background-color: #f2f2f2;
+      }
+
+      /* Ícone e texto no perfil */
+      .boxUsers {
+        display: flex;
+        align-items: center;
+      }
+      .boxUsers svg {
+        margin-right: 8px;
+      }
+    </style>
   </head>
 
   <body class="bodyPlataforma">
+    <!-- NAV SUPERIOR -->
     <div class="navPrincipal">
-      <a href="{% url 'HomePage' %}"><img src="{% static 'clientes/images/LOGO_CASA_PRINCIPAL.png' %}" class="LogoPrincipal" /></a>
+      <a href="{% url 'HomePage' %}">
+        <img
+          src="{% static 'clientes/images/LOGO_CASA_PRINCIPAL.png' %}"
+          class="LogoPrincipal"
+          alt="Logo Principal"
+        />
+      </a>
+
       <div class="box-usuario" id="box-usuario">
         <div class="dropdown">
-          <button class="botao-usuario" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false" onclick="toggleDropdown()">
-            <div class="" id="box-usuario">
+          <button
+            class="botao-usuario"
+            type="button"
+            id="dropdownMenuButton"
+            aria-haspopup="true"
+            aria-expanded="false"
+            onclick="toggleDropdown()"
+            style="border: none; background: none;"
+          >
+            <div id="box-usuario">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                   <a class="boxUsers">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="" width="45" height="45" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="45"
+                      height="45"
+                      fill="currentColor"
+                      class="bi bi-person-circle"
+                      viewBox="0 0 16 16"
+                    >
                       <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                      <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                      <path
+                        fill-rule="evenodd"
+                        d="M0 8a8 8 0 1 1 16
+                          0A8 8 0 0 1 0 8zm8-7a7
+                          7 0 0 0-5.468 11.37C3.242
+                          11.226 4.805 10 8 10s4.757
+                          1.225 5.468 2.37A7 7 0 0
+                          0 8 1z"
+                      />
                     </svg>
                     <div class="boxNameUser">
-                      <div class="">
-                        {% if request.user.is_authenticated %}
-                          <div class="">
-                            <p>Ola, {{ request.user.username }}</p>
-                          </div>
-                        {% else %}
-                          <p>Login</p>
-                        {% endif %}
-                      </div>
+                      {% if request.user.is_authenticated %}
+                        <p>Olá, {{ request.user.username }}</p>
+                      {% else %}
+                        <p>Login</p>
+                      {% endif %}
                     </div>
                   </a>
                 </li>
@@ -46,65 +206,168 @@
             </div>
           </button>
           {% if request.user.is_authenticated %}
-            <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="dropdownMenuButton">
+            <div
+              class="dropdown-menu"
+              id="dropdownMenu"
+              aria-labelledby="dropdownMenuButton"
+            >
               <a class="dropdown-item" href="{% url 'plataforma' %}">Perfil</a>
               <a class="dropdown-item" href="{% url 'cadastroCasa' %}">Cadastrar Casa</a>
               <a class="dropdown-item" href="{% url 'casas_reservadas' %}">Minhas Reservas</a>
               <a class="dropdown-item" href="{% url 'casas_do_usuario' %}">Minhas Casas</a>
               <a class="dropdown-item" href="{% url 'logout' %}">Sair</a>
               <div class="dropdown-divider"></div>
-              {% comment %} <a class="dropdown-item" href="#">Sair</a> {% endcomment %}
             </div>
           {% else %}
-            <div class="dropdown-menu dropUser" id="dropdownMenu" aria-labelledby="dropdownMenuButton">
+            <div
+              class="dropdown-menu"
+              id="dropdownMenu"
+              aria-labelledby="dropdownMenuButton"
+            >
               <a class="dropdown-item" href="{% url 'Login' %}">Entrar</a>
               <a class="dropdown-item" href="{% url 'HomePage' %}">Home</a>
               <div class="dropdown-divider"></div>
-              {% comment %} <a class="dropdown-item" href="#">Sair</a> {% endcomment %}
             </div>
           {% endif %}
         </div>
       </div>
     </div>
-    <div id="criar-usuario" class="criar-usuario">
+
+    <!-- ALERTA DE USUÁRIO EXISTENTE -->
+    <div id="criar-usuario" class="criar-usuario text-center">
       {% if usuario_existe %}
-        <div class="alert alert-danger" role="alert">Esse nome de usuário já está em uso. Por favor, tente outro.</div>
-        {% comment %}
+        <div class="alert alert-danger" role="alert">
+          Esse nome de usuário já está em uso. Por favor, tente outro.
+        </div>
+      {% comment %}
       {% else %}
-        <div class="alert alert-success" role="alert">Usuário cadastrado com sucesso</div> {% endcomment %}
+        <div class="alert alert-success" role="alert">
+          Usuário cadastrado com sucesso
+        </div>
+      {% endcomment %}
       {% endif %}
     </div>
+
+    <!-- FORMULÁRIO DE CADASTRO -->
     <div class="boxC">
-      <form action="{% url 'cadastro' %}" method="POST" class="FormCadastroUser">
+      <form action="{% url 'cadastro' %}" method="POST">
         {% csrf_token %}
         <div class="boxInputsCadastro">
-          <img src="{% static 'clientes/images/LOGO_CASA_PRINCIPAL.png' %}" />
-          <input type="text" class="inputsC" placeholder="usuario" name="username" /><br />
-          <input type="text" class="inputsC" placeholder="nome" name="first_name" /><br />
-          <input type="text" class="inputsC" placeholder="ultimo nome" name="last_name" /><br />
-          <input type="text" class="inputsC" placeholder=" Data de Nascimento" name="dt_nasc" /><br />
-          <input type="text" class="inputsC" placeholder="CPF" name="cpf" /><br />
-          <input type="email" class="inputsC" placeholder="E-mail" name="email" /><br />
-          <input type="text" class="inputsC" placeholder="Instagram" name="instagram" /><br />
-          <input type="tel" class="inputsC" placeholder="Telefone" name="telefone" /><br />
-          <input type="password" class="inputsC" placeholder="senha" name="senha" />
-          <input type="submit" class="buttonC" value="Cadastre-se" />
+          <!-- LOGO MAIOR -->
+          <img
+            src="{% static 'clientes/images/LOGO_CASA_PRINCIPAL.png' %}"
+            alt="Logo"
+          />
+
+          <!-- 1ª LINHA: USUÁRIO (coluna inteira) -->
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <input
+                type="text"
+                name="username"
+                placeholder="Usuário"
+                class="form-control"
+              />
+            </div>
+          </div>
+
+          <!-- 2ª LINHA: NOME e SOBRENOME -->
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <input
+                type="text"
+                name="first_name"
+                placeholder="Nome"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <input
+                type="text"
+                name="last_name"
+                placeholder="Sobrenome"
+                class="form-control"
+              />
+            </div>
+          </div>
+
+          <!-- 3ª LINHA: DATA NASC e CPF -->
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <input
+                type="text"
+                name="dt_nasc"
+                placeholder="Data de Nascimento"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <input
+                type="text"
+                name="cpf"
+                placeholder="CPF"
+                class="form-control"
+              />
+            </div>
+          </div>
+
+          <!-- 4ª LINHA: E-MAIL e INSTAGRAM -->
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <input
+                type="email"
+                name="email"
+                placeholder="E-mail"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <input
+                type="text"
+                name="instagram"
+                placeholder="Instagram"
+                class="form-control"
+              />
+            </div>
+          </div>
+
+          <!-- 5ª LINHA: TELEFONE e SENHA -->
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <input
+                type="tel"
+                name="telefone"
+                placeholder="Telefone"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <input
+                type="password"
+                name="senha"
+                placeholder="Senha"
+                class="form-control"
+              />
+            </div>
+          </div>
+
+          <!-- BOTÃO -->
+          <input
+            type="submit"
+            class="buttonC"
+            value="Cadastre-se"
+          />
         </div>
       </form>
     </div>
 
-    <script>
-      function submitForm(formId) {
-        document.getElementById(formId).submit()
-      }
-    </script>
-
+    <!-- SCRIPTS -->
     <script>
       function toggleDropdown() {
         const boxUsuario = document.getElementById('box-usuario')
         boxUsuario.classList.toggle('active')
       }
-      
+
       window.onclick = function (event) {
         const boxUsuario = document.getElementById('box-usuario')
         if (!event.target.matches('.botao-usuario') && !boxUsuario.contains(event.target)) {
@@ -112,5 +375,17 @@
         }
       }
     </script>
+
+    <!-- Bootstrap JS, se precisar -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JsmLB1CnamnHaK/3hPwvoXp+F7NYum94/+Hsjqgi+Kg"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6PZn27k18syBU2Z7mSp1PwDyMRbdXRAfYtIR+4Ks"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
