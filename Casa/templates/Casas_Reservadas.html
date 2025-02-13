@@ -5,158 +5,136 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Document</title>
-    <!-- Suas folhas de estilo -->
+    <title>Minhas Reservas</title>
+
     <link rel="stylesheet" href="{% static 'clientes/css/clientes.css' %}"/>
     <link rel="stylesheet" href="{% static 'general/css/base.css' %}"/>
     <link rel="stylesheet" href="{% static 'general/css/general.css' %}"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-            crossorigin="anonymous"></script>
+
+    <!-- Bootstrap 5 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
+
     <style>
-      /* EXEMPLO DE CSS PARA A SIDEBAR LATERAL */
-      .sidebar {
-        position: fixed;
-        top: 0;             /* Cola no topo da tela */
-        left: 0;            /* Cola na esquerda */
-        width: 100px;       /* Largura desejada */
-        height: 100vh;      /* Ocupa toda a altura da tela */
-        overflow-y: auto;   /* Caso o conteúdo exceda a tela */
-        z-index: 999;       /* Fica acima de outros elementos */
-      }
+        /* Fundo da página */
+        body {
+            background-color: #eceff8;
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
 
-      /* Para remover margem/padding do PRIMEIRO ícone e grudá-lo no topo */
-      .sidebar a.nav-link:first-of-type {
-        margin-top: 0 !important;
-        padding-top: 0 !important;
-      }
+        /* Card da reserva */
+        .reserva-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            margin: auto;
+        }
 
-      /* Links da sidebar */
-      .sidebar a {
-        padding: 15px 10px;
-        text-decoration: none;
-        font-size: 13px;
-        color: black;
-        display: block;
-        transition: background-color 0.3s ease;
-      }
+        /* Imagem da casa */
+        .reserva-card img {
+            width: 80%;
+            max-height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
 
-      .sidebar a:hover {
-        background-color: #add8e6;
-      }
+        /* Grid de informações (coloca as infos lado a lado) */
+        .reserva-info .row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
 
-      .icon-text {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+        /* Informações da casa */
+        .reserva-info p {
+            flex: 1;
+            font-size: 16px;
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            text-align: center;
+            margin-bottom: 10px;
+        }
 
-      .icon-text svg {
-        margin-bottom: 5px; /* Espaço entre ícone e texto */
-      }
+        /* Descrição ocupa a linha inteira */
+        .reserva-info .descricao {
+            flex-basis: 100%;
+        }
 
-      .nav-text {
-        display: block;
-        font-size: 14px;
-      }
+        /* Botões de ação */
+        .reserva-acoes {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
 
-      /* Ajusta o conteúdo principal para não ficar embaixo da sidebar */
-      .BoxbodyHome {
-        margin-left: 220px; /* Afasta o resto do conteúdo, igual à largura da sidebar */
-        padding: 20px;
-        margin-top: 80px;   /* se houver cabeçalho fixo, ajuste aqui */
-      }
+        .btn-reserva {
+            width: 200px;
+            height: 45px;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 25px;
+            border: none;
+        }
 
-      /* Exemplo do logo na sidebar */
-      .LogoPrincipal {
-        display: block;
-        width: 80px;
-        height: auto;
-      }
+        .btn-reserva.btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-reserva.btn-danger:hover {
+            background-color: #b02a37;
+        }
+
+        .btn-reserva.btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-reserva.btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .container{
+
+        margin-top: 150px;
+
+        background-color: withe !important;
+        border: solid black 1px;
+        border-radius: 10px;
+        height:550px;
+     }
+
+
     </style>
-
-    <script>
-        function toggleDropdown() {
-          const boxUsuario = document.getElementById('box-usuario')
-          boxUsuario.classList.toggle('active')
-        }
-
-        window.onclick = function (event) {
-          const boxUsuario = document.getElementById('box-usuario')
-          if (!event.target.matches('.botao-usuario') && !boxUsuario.contains(event.target)) {
-            boxUsuario.classList.remove('active')
-          }
-        }
-    </script>
 </head>
 
-<body class="bodyHomePage">
+<body>
 
-<!-- Barra superior, se houver -->
+<!-- Barra superior (mantida sem mudanças) -->
 <div class="navPrincipal">
-    <!-- Coloque aqui seu header, se precisar. Ou remova se não usar. -->
     <form method="get" action="{% url 'listar_casas' %}">
         <div class="boxEscolhaCriterio">
             <div class="EscolhaCriterio">
-                <select name="escolha_critero" id="id_escolha_critero" class="form-select formselectHome"
-                        aria-label="Default select example">
+                <select name="escolha_critero" id="id_escolha_critero" class="form-select formselectHome">
                     <option value="num_quartos">Número de Quartos</option>
                     <option value="num_banheiros">Número de Banheiros</option>
                     <option value="preco_total">Valor</option>
                 </select>
-
                 <input type="number" name="quantidade" id="id_quantidade" placeholder="Quantidade:"/>
                 <button type="submit">Filtrar</button>
             </div>
         </div>
     </form>
-
-    <div class="box-usuario" id="box-usuario">
-        <div class="dropdown">
-            <button class="botao-usuario" type="button" id="dropdownMenuButton" aria-haspopup="true"
-                    aria-expanded="false" onclick="toggleDropdown()">
-                <div class="" id="box-usuario">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="boxUsers">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45"
-                                     fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                                    <path fill-rule="evenodd"
-                                          d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                                </svg>
-                                <div class="boxNameUser">
-                                    {% if request.user.is_authenticated %}
-                                        <p>{{ request.user.username }}</p>
-                                    {% else %}
-                                        <p>Login</p>
-                                    {% endif %}
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </button>
-            {% if request.user.is_authenticated %}
-            <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="{% url 'plataforma' %}">Perfil</a>
-                <a class="dropdown-item" href="{% url 'cadastroCasa' %}">Cadastrar Casa</a>
-                <a class="dropdown-item" href="{% url 'casas_reservadas' %}">Minhas Reservas</a>
-                <a class="dropdown-item" href="{% url 'casas_do_usuario' %}">Minhas Casas</a>
-                <a class="dropdown-item" href="{% url 'logout' %}">Sair</a>
-                <div class="dropdown-divider"></div>
-            </div>
-            {% else %}
-            <div class="dropdown-menu dropUser" id="dropdownMenu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="{% url 'Login' %}">Entrar</a>
-                <a class="dropdown-item" href="{% url 'cadastro' %}">Cadastrar-se</a>
-                <div class="dropdown-divider"></div>
-            </div>
-            {% endif %}
-        </div>
-    </div>
 </div>
 
 <!-- SIDEBAR LATERAL FIXA -->
@@ -201,6 +179,17 @@
             <span class="nav-text">Minhas Casas</span>
         </div>
     </a>
+
+    <a href="{% url 'listar_pagamentos' %}">
+        <div class="icon-text">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                 class="bi bi-house-check" viewBox="0 0 16 16">
+                <path d="M7.293 1.5a1 1 0 0 1 1.414 0L11 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l2.354 2.353a.5.5 0 0 1-.708.708L8 2.207l-5 5V13.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 2 13.5V8.207l-.646.647a.5.5 0 1 1-.708-.708z"/>
+                <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.707l.547.547 1.17-1.951a.5.5 0 1 1 .858.514"/>
+            </svg>
+            <span class="nav-text">Meus Pagamentos</span>
+        </div>
+    </a>
     <div class="sair_icon">
         <a href="{% url 'logout' %}">
             <div class="icon-text">
@@ -218,45 +207,48 @@
 </div>
 
 
-<!-- ========== LISTA DE RESERVAS ========== -->
-<div class="BoxbodyHomeReserva">
-  {% for reserva in reservas %}
-    <div class="bodyHomeReserva">
-      {% if reserva.casa.imagem %}
-        <img src="{{ reserva.casa.imagem.url }}" alt="Imagem da Casa" />
-      {% endif %}
+<!-- Conteúdo principal -->
+<div class="container">
 
-      <div class="info-reserva">
-        <p>{{ reserva.casa.endereco }}</p>
-        <p>{{ reserva.casa.num_quarto }} Quartos</p>
-        <p>{{ reserva.casa.num_banheiro }} Banheiros</p>
-        <p>{{ reserva.casa.descricao }}</p>
-        <p>Preço Total: {{ reserva.casa.preco_total }}</p>
-      </div>
+    <div class="row justify-content-center">
+        {% for reserva in reservas %}
+            <div class="col-md-6">
+                <div class="reserva-card">
+                    {% if reserva.casa.imagem %}
+                        <img src="{{ reserva.casa.imagem.url }}" alt="Imagem da Casa"/>
+                    {% endif %}
 
-      <div class="boxBotoes">
-        <form action="{% url 'excluir_reserva_casa' reserva.id %}" method="post">
-          {% csrf_token %}
-          <button type="submit" class="btn btn-danger">
-            Excluir Reserva
-          </button>
-        </form>
-        <a
-          href="{% url 'redirecionar_pagamento' reserva.id %}"
-          class="btn btn-primary"
-        >
-          Fazer Pagamento
-        </a>
-      </div>
+                    <div class="reserva-info">
+                        <div class="row">
+                            <p><strong>Quartos:</strong> {{ reserva.casa.num_quarto }}</p>
+                            <p><strong>Banheiros:</strong> {{ reserva.casa.num_banheiro }}</p>
+                        </div>
+                        <div class="row">
+                            <p><strong>Endereço:</strong> {{ reserva.casa.endereco }}</p>
+                            <p><strong>Preço Total:</strong> R$ {{ reserva.casa.preco_total }}</p>
+                        </div>
+                        <div class="row">
+                            <p class="descricao"><strong>Descrição:</strong> {{ reserva.casa.descricao }}</p>
+                        </div>
+                    </div>
+
+                    <div class="reserva-acoes">
+                        <form action="{% url 'excluir_reserva_casa' reserva.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn-reserva btn-danger">Cancelar</button>
+                        </form>
+
+                        <a href="{% url 'redirecionar_pagamento' reserva.id %}" class="btn-reserva btn-primary">
+                            💳 Pagar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p class="text-center">Você ainda não possui reservas.</p>
+        {% endfor %}
     </div>
-  {% endfor %}
 </div>
 
-<!-- Bootstrap JS (se necessário) -->
-<script
-  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-  crossorigin="anonymous"
-></script>
 </body>
 </html>

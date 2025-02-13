@@ -60,41 +60,6 @@ def fazer_reserva(request, casa_id):
         return redirect('detalhes_casa', casa_id=casa.id)
 
     return render(request, 'DetalhesCasa.html', {'casa': casa})
-# def fazer_reserva(request, casa_id):
-#     casa = get_object_or_404(Casa, id=casa_id)
-#
-#     if request.method == 'POST':
-#         numero_cartao = request.POST.get('numero_cartao')
-#         data_final_str = request.POST.get('data_final')
-#
-#         if not data_final_str:
-#             messages.error(request, 'Por favor, escolha uma data para fazer a reserva.')
-#             return redirect('detalhes_casa', casa_id=casa.id)
-#
-#         data_final = datetime.strptime(data_final_str, '%Y-%m-%d').date()
-#
-#         # Verifica se a casa já tem uma reserva
-#         if Reserva.objects.filter(casa=casa, data_final__gte=data_final).exists():
-#             messages.error(request, 'Esta casa já foi reservada para a data escolhida.')
-#             return redirect('detalhes_casa', casa_id=casa.id)
-#
-#         # Cria a reserva associando a casa, o usuário e a data final
-#         with transaction.atomic():
-#             reserva = Reserva.objects.create(casa=casa, usuario=request.user, data_final=data_final)
-#
-#             # Obtém o valor da casa para usar no pagamento
-#             valor_do_pagamento = casa.valor
-#
-#             # Cria a instância do Pagamento associada à reserva
-#             pagamento = Pagamento.objects.create(casa=casa, usuario=request.user, numero_cartao=numero_cartao, valor=valor_do_pagamento, reserva=reserva)
-#
-#         # Redireciona para a página de detalhes da casa com uma mensagem de sucesso
-#         messages.success(request, 'Reserva realizada com sucesso.')
-#         return redirect('detalhes_casa', casa_id=casa.id)
-#
-#     return render(request, 'DetalhesCasa.html', {'casa': casa})
-#
-
 
 
 

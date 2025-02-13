@@ -57,3 +57,26 @@ def realizar_pagamento(request, reserva_id):
 
 
     return render(request, 'fazer_pagamentos.html', {'reserva': minha_reserva})
+
+
+@login_required
+def listar_pagamentos(request):
+    pagamentos_usuario = Pagamento.objects.filter(usuario=request.user)
+
+    # Criar um dicionário para armazenar valores pagos por casa
+    pagamentos_por_casa = {}
+
+    for pagamento in pagamentos_usuario:
+        casa = pagamento.casa
+
+        if casa.id not in pagamentos_por_casa:
+            pagamentos_por_casa[casa.id] = {
+                "casa": casa,
+                "total_pago": casa.valor_pago,
+                "valor_restante": casa.valor_restante
+            }
+
+    return render(request, 'meus_pagamentos.html', {
+        'pagamentos': pagamentos_usuario,
+        'pagamentos_por_casa': pagamentos_por_casa.values()
+    })
